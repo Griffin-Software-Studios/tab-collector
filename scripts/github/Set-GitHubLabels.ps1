@@ -11,6 +11,28 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    throw "GitHub CLI (gh) is required."
+}
+
+function Invoke-Gh {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string[]]$Arguments
+    )
+
+    $output = & gh @Arguments 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        $rendered = ($output | Out-String).Trim()
+        throw "gh $($Arguments -join ' ') failed.`n$rendered"
+    }
+
+    return $output
+}
+
+Write-Host "Validating repository access for $Repo..."
+Invoke-Gh -Arguments @("repo", "view", $Repo, "--json", "nameWithOwner") | Out-Null
+
 $labels = @(
     @{ name = "bug"; color = "d73a4a"; description = "Something isn't working" },
     @{ name = "documentation"; color = "0075ca"; description = "Improvements or additions to documentation" },
@@ -28,18 +50,36 @@ $labels = @(
 
 foreach ($label in $labels) {
     try {
-        gh label create $label.name `
-            --color $label.color `
-            --description $label.description `
-            --repo $Repo 2>$null | Out-Null
+        Invoke-Gh -Arguments @(
+            "label",
+            "create",
+            $label.name,
+            "--color", $label.color,
+            "--description", $label.description,
+            "--repo", $Repo
+        ) | Out-Null
         Write-Host "Created label: $($label.name)"
     }
     catch {
-        gh label edit $label.name `
-            --color $label.color `
-            --description $label.description `
-            --repo $Repo | Out-Null
-        Write-Host "Updated label: $($label.name)"
+        $message = $_.Exception.Message
+        if (
+            $message -match "already exists" -or
+            $message -match "name already exists" -or
+            $message -match "HTTP 422"
+        ) {
+            Invoke-Gh -Arguments @(
+                "label",
+                "edit",
+                $label.name,
+                "--color", $label.color,
+                "--description", $label.description,
+                "--repo", $Repo
+            ) | Out-Null
+            Write-Host "Updated label: $($label.name)"
+        }
+        else {
+            throw
+        }
     }
 }
 

@@ -17,15 +17,37 @@ if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
     throw "GitHub CLI (gh) is required."
 }
 
+function Invoke-Gh {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string[]]$Arguments
+    )
+
+    $output = & gh @Arguments 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        $rendered = ($output | Out-String).Trim()
+        throw "gh $($Arguments -join ' ') failed.`n$rendered"
+    }
+
+    return $output
+}
+
+Write-Host "Validating repository access for $Repo..."
+Invoke-Gh -Arguments @("repo", "view", $Repo, "--json", "nameWithOwner") | Out-Null
+
 Write-Host "Applying repository merge settings baseline for $Repo..."
-gh api -X PATCH "repos/$Repo" `
-    -f allow_merge_commit=true `
-    -f allow_squash_merge=true `
-    -f allow_rebase_merge=false `
-    -f delete_branch_on_merge=true `
-    -f has_issues=true `
-    -f has_wiki=false `
-    -f auto_init=false | Out-Null
+Invoke-Gh -Arguments @(
+    "api",
+    "-X", "PATCH",
+    "repos/$Repo",
+    "-f", "allow_merge_commit=true",
+    "-f", "allow_squash_merge=true",
+    "-f", "allow_rebase_merge=false",
+    "-f", "delete_branch_on_merge=true",
+    "-f", "has_issues=true",
+    "-f", "has_wiki=false",
+    "-f", "auto_init=false"
+) | Out-Null
 
 $protectionPayload = @{
     required_status_checks           = @{
@@ -53,7 +75,12 @@ try {
     $protectionPayload | ConvertTo-Json -Depth 10 | Set-Content -Path $tempFile -Encoding utf8
 
     Write-Host "Applying strict branch protection on main for $Repo..."
-    gh api -X PUT "repos/$Repo/branches/main/protection" --input $tempFile | Out-Null
+    Invoke-Gh -Arguments @(
+        "api",
+        "-X", "PUT",
+        "repos/$Repo/branches/main/protection",
+        "--input", $tempFile
+    ) | Out-Null
 }
 finally {
     Remove-Item $tempFile -ErrorAction SilentlyContinue
@@ -61,4 +88,4 @@ finally {
 
 Write-Host "Strict governance baseline applied for $Repo."
 Write-Host "Verifying effective protection..."
-gh api "repos/$Repo/branches/main/protection"
+Invoke-Gh -Arguments @("api", "repos/$Repo/branches/main/protection")
