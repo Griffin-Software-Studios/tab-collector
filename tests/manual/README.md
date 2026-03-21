@@ -16,3 +16,11 @@ To refresh the current evidence set:
 ```powershell
 npm run evidence:edge
 ```
+
+The script currently captures:
+
+- Collector (desktop)
+- Collector (tablet)
+- Collector (mobile)
+- Popup
+- Options

@@ -46,9 +46,13 @@ from release packaging.
 
 - [Latest Edge release checklist](tests/manual/EDGE_RELEASE_CHECKLIST.md)
 
-| Collector | Popup | Options |
+| Collector (Desktop) | Collector (Tablet) | Collector (Mobile) |
 | --- | --- | --- |
-| ![Collector page evidence](tests/assets/screenshots/collector-page-edge.png) | ![Popup evidence](tests/assets/screenshots/popup-page-edge.png) | ![Options page evidence](tests/assets/screenshots/options-page-edge.png) |
+| ![Collector page evidence](tests/assets/screenshots/collector-page-edge.png) | ![Collector tablet evidence](tests/assets/screenshots/collector-page-tablet-edge.png) | ![Collector mobile evidence](tests/assets/screenshots/collector-page-mobile-edge.png) |
+
+| Popup | Options |
+| --- | --- |
+| ![Popup evidence](tests/assets/screenshots/popup-page-edge.png) | ![Options page evidence](tests/assets/screenshots/options-page-edge.png) |
 
 ## Core surfaces
 
