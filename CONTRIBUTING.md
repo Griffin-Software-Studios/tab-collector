@@ -10,7 +10,8 @@ and canonical issue-label baseline aligned to GSS governance standards.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: Adapted from Org-Security-Docs governance standards.
 -->
 
@@ -122,7 +123,7 @@ This repository uses the GSS canonical baseline:
 Apply or repair labels with:
 
 ```powershell
-pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "<ORG>/<REPO>"
 ```
 
 ## Strict repository governance
@@ -130,7 +131,7 @@ pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/t
 Apply strict `main` protection and merge-policy settings with:
 
 ```powershell
-pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "<ORG>/<REPO>"
 ```
 
 Default bootstrap order for new GSS repositories:

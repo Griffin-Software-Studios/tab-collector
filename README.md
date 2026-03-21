@@ -28,27 +28,36 @@ submission.
 
 ### Dark mode
 
-| Collector | Popup | Options |
-| --- | --- | --- |
-| ![Collector page preview](docs/assets/collector-page-preview.svg) | ![Popup preview](docs/assets/popup-preview.svg) | ![Options preview](docs/assets/options-preview.svg) |
+- Collector:
+  ![Collector page preview](docs/assets/collector-page-preview.svg)
+- Popup:
+  ![Popup preview](docs/assets/popup-preview.svg)
+- Options:
+  ![Options preview](docs/assets/options-preview.svg)
 
 ### Light mode
 
-| Collector | Popup | Options |
-| --- | --- | --- |
-| ![Collector page light preview](docs/assets/collector-page-preview-light.svg) | ![Popup light preview](docs/assets/popup-preview-light.svg) | ![Options light preview](docs/assets/options-preview-light.svg) |
+- Collector:
+  ![Collector page light preview](docs/assets/collector-page-preview-light.svg)
+- Popup:
+  ![Popup light preview](docs/assets/popup-preview-light.svg)
+- Options:
+  ![Options light preview](docs/assets/options-preview-light.svg)
 
 ## Edge validation evidence
 
-These are real Edge-backed screenshots captured from an isolated unpacked-extension
-session. They are repo-local proof artifacts under `tests/` and are excluded
-from release packaging.
+These are real Edge-backed screenshots captured from an isolated
+unpacked-extension session. They are repo-local proof artifacts under `tests/`
+and are excluded from release packaging.
 
 - [Latest Edge release checklist](tests/manual/EDGE_RELEASE_CHECKLIST.md)
 
-| Collector | Popup | Options |
-| --- | --- | --- |
-| ![Collector page evidence](tests/assets/screenshots/collector-page-edge.png) | ![Popup evidence](tests/assets/screenshots/popup-page-edge.png) | ![Options page evidence](tests/assets/screenshots/options-page-edge.png) |
+- Collector:
+  ![Collector page evidence](tests/assets/screenshots/collector-page-edge.png)
+- Popup:
+  ![Popup evidence](tests/assets/screenshots/popup-page-edge.png)
+- Options:
+  ![Options page evidence](tests/assets/screenshots/options-page-edge.png)
 
 ## Core surfaces
 

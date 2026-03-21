@@ -10,8 +10,10 @@ concerns, and follow-up work that should stay near the codebase.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This file is not a backlog system. It captures high-signal technical context.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This file is not a backlog system. It captures high-signal technical
+context.
 -->
 
 # Engineering Notes

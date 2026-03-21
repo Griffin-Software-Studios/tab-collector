@@ -4,13 +4,15 @@ Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
 Repo: Tabs
-Purpose: Define the expected connection depth between code, docs, and governance.
+Purpose: Define the expected connection depth between code, docs, and
+governance.
 Description: Provides a rubric for deciding whether a change is documented well
 enough to be considered connected, reviewable, and release-ready.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: Use this as a review aid, not a substitute for engineering judgment.
 -->
 
@@ -30,12 +32,12 @@ records when relevant.
 
 | Level | Name | Meaning |
 | --- | --- | --- |
-| 0 | Isolated | Code changed, but no related documentation or naming review happened |
+| 0 | Isolated | Code changed without related docs or naming review |
 | 1 | Operational | Code works, but docs and registry updates are missing |
 | 2 | Documented | Code and immediate user-facing docs were updated |
 | 3 | Traceable | Code, docs, identifiers, and rationale were updated together |
 | 4 | Governed | Security/release implications are documented and linked |
-| 5 | Release-ready | The change is connected across code, docs, governance, and public-facing repo surfaces |
+| 5 | Release-ready | Connected across code, docs, governance, and public docs |
 
 ## Review dimensions
 
@@ -45,14 +47,18 @@ Score each dimension as:
 - `1` = partially addressed
 - `2` = fully addressed
 
-| Dimension | Questions |
-| --- | --- |
-| Behavior | Does the implementation do what the feature claims? |
-| Naming | Are IDs, message types, labels, and storage keys normalized or explicitly documented if they drift? |
-| User explanation | Can a reviewer tell what changed from README, menu docs, or UI copy? |
-| Engineering traceability | Is the change reflected in the function reference or engineering notes if it changes architecture or flow? |
-| Governance/security | Are permissions, integrations, or sensitive behavior documented if relevant? |
-| Verification | Is there evidence of a syntax check, manual check, or other validation? |
+- Behavior:
+  Does the implementation do what the feature claims?
+- Naming:
+  Are IDs, messages, labels, and storage keys normalized or documented?
+- User explanation:
+  Can a reviewer tell what changed from docs or UI copy?
+- Engineering traceability:
+  Is the change reflected in function reference or notes?
+- Governance/security:
+  Are permissions, integrations, or sensitive behavior documented?
+- Verification:
+  Is there evidence of a syntax check, manual check, or other validation?
 
 ## Minimum targets by change type
 
@@ -61,7 +67,7 @@ Score each dimension as:
 - Target: Level 2
 - Required documents:
   `README.md` if public-facing
-  `docs/ENGINEERING_NOTES.md` if the styling introduces a new system or dependency
+  `docs/ENGINEERING_NOTES.md` if styling introduces a new system or dependency
 
 ### New popup or context-menu action
 
@@ -93,9 +99,10 @@ Score each dimension as:
 Use this short checklist before calling a change complete:
 
 1. Behavior is implemented and validated.
-2. User-facing labels and internal IDs are either aligned or the drift is documented.
+2. User-facing labels and internal IDs are aligned or drift is documented.
 3. The relevant local docs were updated.
-4. Security/governance implications are recorded if the change affects permissions, data handling, or release posture.
+4. Security/governance implications are recorded when permissions, data
+   handling, or release posture are affected.
 5. The README reflects the change if an outside reader would care.
 
 ## Current repository gaps
