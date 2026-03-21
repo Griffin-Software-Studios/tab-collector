@@ -13,8 +13,8 @@ be searchable, editable, and easy to restore.
 - Restores tabs into the current window or a new window.
 - Supports excluded domains, duplicate handling, pinned-tab rules, and
   memory-saving restore behavior.
-- Supports Griffin plus imported Cobalt, Ember, and Forest palettes. Griffin
-  currently supports system, light, and dark appearance modes.
+- Supports Griffin plus imported Cobalt, Ember, and Forest palettes, each with
+  system, light, and dark appearance modes.
 - Exports one group or all groups as themed HTML, JSON, or comma-delimited
   data.
 - Uses a Griffin Software Studios visual treatment for the options page and the

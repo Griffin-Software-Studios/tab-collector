@@ -155,6 +155,10 @@ test("collector surface shows the active search summary and highlight treatment"
   assert.match(collectorJs, /refreshState\(\{\s*preserveViewport:\s*true\s*\}\)/);
   assert.match(collectorJs, /refreshState\(\{\s*showLoadingState:\s*true\s*\}\)/);
   assert.match(collectorJs, /window\.scrollTo\(/);
+  assert.match(
+    collectorJs,
+    /if \(action === "toggle-pin"\)\s*\{[\s\S]*?updateLocalGroupFlag\(groupId,\s*"pinned",\s*response\?\.value\);[\s\S]*?render\(\);[\s\S]*?setStatus\(response\?\.value \? "Pinned group tabs in the browser\." : "Unpinned group tabs from the browser\."\);[\s\S]*?return;[\s\S]*?\}/
+  );
   assert.match(collectorJs, /Pinned group tabs in the browser\./);
   assert.match(collectorJs, /Unpinned group tabs from the browser\./);
   assert.doesNotMatch(collectorJs, /Unlock this group to delete it/);
@@ -204,6 +208,7 @@ test("background wiring routes save actions through registries", async () => {
   for (const token of [
     "TOOLBAR_ACTIONS.SAVE_WINDOW",
     "TOOLBAR_ACTIONS.SAVE_CURRENT",
+    "MESSAGE_TYPES.GET_CONTEXT_MENU_DIAGNOSTICS",
     "MESSAGE_TYPES.SAVE_CURRENT_WINDOW",
     "MESSAGE_TYPES.SAVE_CURRENT_TAB",
     "MESSAGE_TYPES.SAVE_CURRENT_GROUP",
@@ -217,6 +222,7 @@ test("background wiring routes save actions through registries", async () => {
   }
 
   for (const functionName of [
+    "getContextMenuDiagnostics",
     "saveCurrentWindow",
     "saveCurrentTab",
     "saveCurrentGroup",

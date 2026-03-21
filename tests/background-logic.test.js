@@ -229,3 +229,52 @@ test("buildGroupPinMutationPlan removes matching pinned tabs and ignores non-pin
     [1]
   );
 });
+
+test("buildGroupPinMutationPlan keeps group-tab order when matching tabs to pin", () => {
+  const groupTabs = [
+    { url: "https://example.com/third" },
+    { url: "https://example.com/first" },
+    { url: "https://example.com/second" }
+  ];
+  const openTabs = [
+    { id: 1, index: 0, url: "https://example.com/first", pinned: false },
+    { id: 2, index: 1, url: "https://example.com/second", pinned: false },
+    { id: 3, index: 2, url: "https://example.com/third", pinned: false }
+  ];
+
+  const plan = backgroundLogic.buildGroupPinMutationPlan(groupTabs, openTabs, {
+    pinned: true
+  });
+
+  assert.deepEqual(
+    plan.tabsToUpdate.map((tab) => tab.id),
+    [3, 1, 2]
+  );
+  assert.deepEqual(plan.tabsToCreate, []);
+  assert.deepEqual(plan.tabsToRemove, []);
+});
+
+test("buildGroupPinMutationPlan removes one pinned browser tab per duplicate group URL on unpin", () => {
+  const groupTabs = [
+    { url: "https://example.com/dup#one" },
+    { url: "https://example.com/dup#two" },
+    { url: "https://example.com/unique" }
+  ];
+  const openTabs = [
+    { id: 11, index: 0, url: "https://example.com/dup", pinned: true },
+    { id: 12, index: 1, url: "https://example.com/dup", pinned: true },
+    { id: 13, index: 2, url: "https://example.com/dup", pinned: false },
+    { id: 14, index: 3, url: "https://example.com/unique", pinned: true }
+  ];
+
+  const plan = backgroundLogic.buildGroupPinMutationPlan(groupTabs, openTabs, {
+    pinned: false
+  });
+
+  assert.deepEqual(
+    plan.tabsToRemove.map((tab) => tab.id),
+    [11, 12, 14]
+  );
+  assert.deepEqual(plan.tabsToUpdate, []);
+  assert.deepEqual(plan.tabsToCreate, []);
+});

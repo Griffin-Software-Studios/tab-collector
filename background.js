@@ -28,6 +28,41 @@ import {
 } from "./background-logic.js";
 
 let contextMenuSyncQueue = Promise.resolve();
+let contextMenuSnapshot = {
+  contextMenuEnabled: false,
+  menus: [],
+  saveCurrentGroupEnabled: false,
+  updatedAt: null
+};
+
+const PAGE_CONTEXT_MENUS = Object.freeze([
+  Object.freeze({
+    id: CONTEXT_MENU_IDS.SAVE_CURRENT_TAB,
+    title: "Save tab to Tab Collector",
+    contexts: ["page"]
+  }),
+  Object.freeze({
+    id: CONTEXT_MENU_IDS.SAVE_CURRENT_GROUP,
+    title: "Save tab group to Tab Collector",
+    contexts: ["page"],
+    enabled: false
+  }),
+  Object.freeze({
+    id: CONTEXT_MENU_IDS.SAVE_CURRENT_WINDOW,
+    title: "Save current window to Tab Collector",
+    contexts: ["page"]
+  }),
+  Object.freeze({
+    id: CONTEXT_MENU_IDS.OPEN_COLLECTOR,
+    title: "Open Tab Collector",
+    contexts: ["page"]
+  }),
+  Object.freeze({
+    id: CONTEXT_MENU_IDS.EXCLUDE_SITE,
+    title: "Exclude website from Tab Collector",
+    contexts: ["page"]
+  })
+]);
 
 bootstrap();
 
@@ -257,35 +292,34 @@ async function performContextMenuSync() {
   await chrome.contextMenus.removeAll();
 
   if (!settings.contextMenuEnabled) {
+    contextMenuSnapshot = {
+      contextMenuEnabled: false,
+      menus: [],
+      saveCurrentGroupEnabled: false,
+      updatedAt: nowIso()
+    };
     return;
   }
 
-  await createMenu({
-    id: CONTEXT_MENU_IDS.SAVE_CURRENT_TAB,
-    title: "Save tab to Tab Collector",
-    contexts: ["page"]
-  });
-  await createMenu({
-    id: CONTEXT_MENU_IDS.SAVE_CURRENT_GROUP,
-    title: "Save tab group to Tab Collector",
-    contexts: ["page"],
-    enabled: false
-  });
-  await createMenu({
-    id: CONTEXT_MENU_IDS.SAVE_CURRENT_WINDOW,
-    title: "Save current window to Tab Collector",
-    contexts: ["page"]
-  });
-  await createMenu({
-    id: CONTEXT_MENU_IDS.OPEN_COLLECTOR,
-    title: "Open Tab Collector",
-    contexts: ["page"]
-  });
-  await createMenu({
-    id: CONTEXT_MENU_IDS.EXCLUDE_SITE,
-    title: "Exclude website from Tab Collector",
-    contexts: ["page"]
-  });
+  for (const menu of PAGE_CONTEXT_MENUS) {
+    await createMenu({
+      id: menu.id,
+      title: menu.title,
+      contexts: menu.contexts,
+      enabled: menu.enabled
+    });
+  }
+
+  contextMenuSnapshot = {
+    contextMenuEnabled: true,
+    menus: PAGE_CONTEXT_MENUS.map((menu) => ({
+      id: menu.id,
+      title: menu.title,
+      contexts: [...menu.contexts]
+    })),
+    saveCurrentGroupEnabled: false,
+    updatedAt: nowIso()
+  };
 
   await performContextMenuStateSync();
 }
@@ -312,6 +346,11 @@ async function performContextMenuStateSync(tab) {
     await chrome.contextMenus.update(CONTEXT_MENU_IDS.SAVE_CURRENT_GROUP, {
       enabled: groupSaveEnabled
     });
+    contextMenuSnapshot = {
+      ...contextMenuSnapshot,
+      saveCurrentGroupEnabled: groupSaveEnabled,
+      updatedAt: nowIso()
+    };
   } catch {
     return;
   }
@@ -338,6 +377,8 @@ async function handleMessage(message, sender) {
         currentWindowId: message.currentWindowId ?? sender?.tab?.windowId
       });
       return {};
+    case MESSAGE_TYPES.GET_CONTEXT_MENU_DIAGNOSTICS:
+      return getContextMenuDiagnostics();
     case MESSAGE_TYPES.SAVE_CURRENT_WINDOW:
       return saveCurrentWindow(message);
     case MESSAGE_TYPES.SAVE_CURRENT_TAB:
@@ -366,6 +407,27 @@ async function handleMessage(message, sender) {
     default:
       throw new Error(`Unsupported message type: ${message?.type || "unknown"}`);
   }
+}
+
+async function getContextMenuDiagnostics() {
+  await syncContextMenus();
+
+  const registeredMenuIds = contextMenuSnapshot.menus.map((menu) => menu.id);
+  const expectedMenuIds = Object.values(CONTEXT_MENU_IDS);
+  const pageOnlyContexts = contextMenuSnapshot.menus.every((menu) =>
+    Array.isArray(menu.contexts) &&
+    menu.contexts.length === 1 &&
+    menu.contexts[0] === "page"
+  );
+
+  return {
+    contextMenuEnabled: contextMenuSnapshot.contextMenuEnabled,
+    expectedMenuIds,
+    registeredMenuIds,
+    pageOnlyContexts,
+    saveCurrentGroupEnabled: contextMenuSnapshot.saveCurrentGroupEnabled,
+    snapshotUpdatedAt: contextMenuSnapshot.updatedAt
+  };
 }
 
 async function openCollector({ search = "", currentWindowId } = {}) {

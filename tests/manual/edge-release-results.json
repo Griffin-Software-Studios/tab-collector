@@ -1,5 +1,5 @@
 {
-  "dateUtc": "2026-03-21T05:59:44.797Z",
+  "dateUtc": "2026-03-21T06:35:21.156Z",
   "edgePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "port": 9229,
   "extensionId": "fplmoeljaafoanjabjhloolomhkfbhbl",
@@ -37,14 +37,14 @@
       "status": "passed"
     },
     {
-      "id": "popup-page",
-      "description": "Popup page renders quick actions, selected tab list, and quick list",
+      "id": "page-context-menu",
+      "description": "Background diagnostics confirm page context-menu registration and page-only scope for collector actions",
       "status": "passed"
     },
     {
-      "id": "page-context-menu",
-      "description": "Page context menu entries require live right-click validation in an interactive Edge session",
-      "status": "manual-follow-up"
+      "id": "popup-page",
+      "description": "Popup page renders quick actions, selected tab list, and quick list",
+      "status": "passed"
     },
     {
       "id": "native-tab-strip-menu",

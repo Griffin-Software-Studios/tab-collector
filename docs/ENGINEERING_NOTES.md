@@ -170,9 +170,9 @@ mobile viewport sizes in addition to popup and options surfaces.
 
 Near-term likely work:
 
-1. add light and dark variants for Cobalt, Ember, and Forest
-2. continue manual tablet/mobile passes on collector group layouts
-3. refresh Edge evidence after the manual script updates
+1. continue manual tablet/mobile passes on collector group layouts
+2. expand automated collector interaction coverage
+3. complete remaining store-release hardening and review queue items
 
 ## Store-preparation notes
 
