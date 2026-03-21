@@ -1,0 +1,29 @@
+ai_integration_record_version: "1.0"
+
+ai_agent_name: "OpenAI Codex"
+ai_agent_purpose: "Assist with source code edits, documentation drafting, and repository preparation for the Tab Collector extension"
+ai_agent_mode: "hybrid"
+ai_agent_risk_tier: "medium"
+
+ai_app_name: "Tab Collector Repository"
+ai_app_instance: "dev"
+ai_app_data_domain: "code"
+
+ai_connector_name: "local-workspace-access"
+ai_connector_type: "other"
+ai_connector_scope_summary: "Read/write access to the local extension workspace and read access to referenced governance documents"
+ai_connector_read_only: false
+
+ai_integration_id: "ai-int-2026-03-14-001"
+ai_integration_type: "plugin"
+ai_integration_environment: "dev"
+ai_integration_permissions: "Read/write project files; local read access to governance references; no direct production access"
+ai_integration_data_classification: "internal"
+ai_integration_logging_level: "basic"
+ai_integration_log_location: "local-session"
+ai_integration_review_frequency: "quarterly"
+ai_integration_last_reviewed: "2026-03-14"
+ai_integration_reviewed_by: "Project Owner"
+ai_integration_approval_status: "exception"
+ai_integration_approved_by: "Project Owner"
+ai_integration_approval_notes: "Bootstrap working record created during repository hardening. Formal governance review should occur before external publication claims are made."

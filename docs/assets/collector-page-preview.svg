@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Tab Collector collector page preview</title>
+  <desc id="desc">Illustrative preview of the collector page layout with Griffin styling.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7464a1"/>
+      <stop offset="18%" stop-color="#071019"/>
+      <stop offset="100%" stop-color="#0b1220"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)"/>
+  <rect x="40" y="32" width="1120" height="90" rx="22" fill="#0f1727" stroke="#2a3d5f"/>
+  <text x="78" y="66" fill="#ff8c42" font-family="Segoe UI, Arial, sans-serif" font-size="18" letter-spacing="4">TAB COLLECTOR</text>
+  <text x="78" y="98" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700">Saved tab collector</text>
+  <rect x="810" y="54" width="150" height="44" rx="12" fill="#479bcc"/>
+  <text x="852" y="82" fill="#071019" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Search</text>
+  <rect x="976" y="54" width="144" height="44" rx="12" fill="#ff8c42"/>
+  <text x="1016" y="82" fill="#071019" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">Options</text>
+  <rect x="40" y="144" width="350" height="92" rx="20" fill="#111c31" stroke="#2a3d5f"/>
+  <rect x="425" y="144" width="350" height="92" rx="20" fill="#111c31" stroke="#2a3d5f"/>
+  <rect x="810" y="144" width="350" height="92" rx="20" fill="#111c31" stroke="#2a3d5f"/>
+  <text x="72" y="180" fill="#9aa6b2" font-family="Segoe UI, Arial, sans-serif" font-size="18">Saved groups</text>
+  <text x="72" y="214" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">12</text>
+  <text x="457" y="180" fill="#9aa6b2" font-family="Segoe UI, Arial, sans-serif" font-size="18">Saved tabs</text>
+  <text x="457" y="214" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">148</text>
+  <text x="842" y="180" fill="#9aa6b2" font-family="Segoe UI, Arial, sans-serif" font-size="18">Theme</text>
+  <text x="842" y="214" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Auto</text>
+  <rect x="40" y="270" width="1120" height="180" rx="24" fill="#0f1727" stroke="#2a3d5f"/>
+  <text x="74" y="314" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Release planning</text>
+  <text x="74" y="346" fill="#9aa6b2" font-family="Segoe UI, Arial, sans-serif" font-size="18">5 tabs  |  Notes  |  Updated just now</text>
+  <rect x="918" y="292" width="190" height="48" rx="14" fill="#ff8c42"/>
+  <text x="970" y="323" fill="#071019" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Restore</text>
+  <rect x="74" y="374" width="940" height="24" rx="12" fill="#15233a"/>
+  <rect x="74" y="410" width="420" height="16" rx="8" fill="#479bcc"/>
+  <rect x="40" y="474" width="1120" height="180" rx="24" fill="#0f1727" stroke="#2a3d5f"/>
+  <text x="74" y="518" fill="#e6eef6" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">Research links</text>
+  <text x="74" y="550" fill="#9aa6b2" font-family="Segoe UI, Arial, sans-serif" font-size="18">3 tabs  |  Pinned group</text>
+  <rect x="918" y="496" width="190" height="48" rx="14" fill="#479bcc"/>
+  <text x="968" y="527" fill="#071019" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Open</text>
+  <rect x="74" y="578" width="880" height="18" rx="9" fill="#15233a"/>
+  <rect x="74" y="610" width="520" height="18" rx="9" fill="#15233a"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "name": "tab-collector",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "evidence:edge": "node tests/manual/capture-edge-evidence.js"
+  }
+}

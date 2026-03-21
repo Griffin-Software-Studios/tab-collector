@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab Collector Options</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/tab-collector-64.png" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <div class="hero-brand-lockup">
+            <img class="hero-logo" src="assets/brand/tab-collector-128.png" alt="Tab Collector logo" />
+            <p class="eyebrow">Tab Collector</p>
+          </div>
+          <h1>Extension options</h1>
+          <p>
+            Configure startup behavior, restore rules, duplicate handling, pinned tabs,
+            clipboard formatting, keyboard shortcuts, and excluded websites.
+          </p>
+        </div>
+        <div class="hero-controls">
+          <button id="open-collector" class="primary-button" type="button">
+            Open collector
+          </button>
+          <button id="open-shortcuts" class="ghost-button" type="button">
+            Configure shortcuts
+          </button>
+          <button id="remove-duplicates" class="success-button" type="button">
+            Remove duplicates
+          </button>
+          <p id="status" class="status hero-status" role="status"></p>
+        </div>
+      </header>
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <span>Saved groups</span>
+          <strong id="group-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Saved tabs</span>
+          <strong id="tab-count">0</strong>
+        </article>
+        <article class="summary-card">
+          <span>Excluded domains</span>
+          <strong id="excluded-count">0</strong>
+        </article>
+      </section>
+
+      <section class="settings-layout">
+        <div id="settings-root" class="settings-grid"></div>
+
+        <aside class="sidebar">
+          <section class="side-card">
+            <div class="card-heading">
+              <h2>Excluded websites</h2>
+              <p>Tabs from excluded domains are skipped when you save tabs to the collector.</p>
+            </div>
+            <form id="excluded-form" class="inline-form">
+              <input
+                id="excluded-input"
+                type="text"
+                placeholder="example.com"
+                autocomplete="off"
+              />
+              <button class="primary-button" type="submit">Add</button>
+            </form>
+            <div id="excluded-list" class="tag-list"></div>
+          </section>
+
+          <section class="side-card">
+            <div class="card-heading">
+              <h2>Import saved tabs</h2>
+              <p>
+                Merge a collector JSON backup or a supported HTML export into your current saved
+                groups.
+              </p>
+            </div>
+            <form id="import-form" class="stack-form">
+              <label class="file-field" for="import-file">
+                <span>Select an export file</span>
+                <input
+                  id="import-file"
+                  type="file"
+                  accept=".json,.html,.htm,application/json,text/html"
+                />
+              </label>
+              <button class="primary-button" type="submit">Import file</button>
+            </form>
+          </section>
+
+          <section class="side-card">
+            <div class="card-heading">
+              <h2>Keyboard shortcuts</h2>
+              <p>
+                Edge exposes shortcut assignment outside the extension. The live command list
+                below shows what is currently assigned.
+              </p>
+            </div>
+            <div id="commands-list" class="commands-list"></div>
+          </section>
+
+          <section class="side-card">
+            <div class="card-heading">
+              <h2>Search keyword</h2>
+              <p>
+                Type <code>11</code>, press space in the address bar, then enter a search term to
+                jump straight into the collector page.
+              </p>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

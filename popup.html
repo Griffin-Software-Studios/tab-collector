@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab Collector</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/brand/tab-collector-64.png" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="popup-header">
+        <div class="popup-brand-lockup">
+          <img
+            class="popup-logo"
+            src="assets/brand/tab-collector-128.png"
+            alt="Tab Collector logo"
+          />
+          <div>
+            <p class="eyebrow">Tab Collector</p>
+            <form id="header-search-form" class="header-search">
+              <label class="visually-hidden" for="header-search-input">Search collector</label>
+              <input
+                id="header-search-input"
+                type="search"
+                placeholder="Search collector"
+                autocomplete="off"
+              />
+              <button class="ghost-button header-search-button" type="submit">Open</button>
+            </form>
+          </div>
+        </div>
+        <button id="open-options-header" class="ghost-button" type="button">
+          Options
+        </button>
+      </header>
+
+      <section class="menu-panel" aria-label="Quick actions">
+        <button class="menu-button" data-action="open-collector" type="button">
+          <span>Open Tab Collector</span>
+          <small>Jump to your saved groups</small>
+        </button>
+        <button class="menu-button" data-action="save-window" type="button">
+          <span>Save current window</span>
+          <small>Store the current selection, tab group, or full window</small>
+        </button>
+        <button class="menu-button" data-action="save-tab" type="button">
+          <span>Save current tab</span>
+          <small>Add it to the first unlocked, unpinned group</small>
+        </button>
+        <button class="menu-button" data-action="save-group" type="button">
+          <span>Save current tab group</span>
+          <small>Store every tab from the active Edge tab group</small>
+        </button>
+        <button class="menu-button" data-action="exclude-site" type="button">
+          <span>Exclude current website</span>
+          <small>Prevent this domain from being stored in future saves</small>
+        </button>
+        <button class="menu-button" data-action="open-options" type="button">
+          <span>Extension options</span>
+          <small>Adjust restore, duplicate, and startup rules</small>
+        </button>
+      </section>
+
+      <section class="compose-panel">
+        <div class="section-heading">
+          <div>
+            <h2>Store selected tabs</h2>
+            <p>Use the popup as the left-click menu and save tabs exactly where you want them.</p>
+          </div>
+          <span id="selection-count" class="selection-pill">0 selected</span>
+        </div>
+
+        <label class="field">
+          <span>Group title</span>
+          <input
+            id="group-title"
+            type="text"
+            placeholder="Optional title for the new group"
+            maxlength="140"
+          />
+        </label>
+
+        <label class="field">
+          <span>Destination</span>
+          <select id="destination-select"></select>
+        </label>
+
+        <div class="toggle-grid">
+          <label class="toggle">
+            <input id="allow-duplicates" type="checkbox" />
+            <span>Allow duplicates for this save</span>
+          </label>
+          <label class="toggle">
+            <input id="include-pinned" type="checkbox" />
+            <span>Include pinned tabs</span>
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Filter open tabs</span>
+          <input
+            id="tab-filter"
+            type="search"
+            placeholder="Press / to focus"
+            autocomplete="off"
+          />
+        </label>
+
+        <div id="tabs-list" class="tabs-list" aria-live="polite"></div>
+
+        <div class="compose-actions">
+          <button id="select-visible" class="ghost-button" type="button">
+            Select visible
+          </button>
+          <button id="clear-selection" class="ghost-button" type="button">
+            Clear
+          </button>
+          <button id="store-selected" class="primary-button" type="button">
+            Store selected tabs
+          </button>
+        </div>
+
+        <p id="status" class="status" role="status"></p>
+      </section>
+
+      <section class="quick-panel">
+        <div class="section-heading">
+          <div>
+            <h2>Quick list</h2>
+            <p>Recent saved groups from your collector page.</p>
+          </div>
+        </div>
+        <div id="quick-list" class="quick-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

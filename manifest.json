@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Collector",
+  "description": "Tab collector for Microsoft Edge with configurable save and restore behavior.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "114",
+  "icons": {
+    "16": "assets/brand/tab-collector-64.png",
+    "32": "assets/brand/tab-collector-64.png",
+    "48": "assets/brand/tab-collector-64.png",
+    "128": "assets/brand/tab-collector-128.png"
+  },
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Tab Collector",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/brand/tab-collector-64.png",
+      "32": "assets/brand/tab-collector-64.png",
+      "48": "assets/brand/tab-collector-64.png",
+      "128": "assets/brand/tab-collector-128.png"
+    }
+  },
+  "options_page": "options.html",
+  "omnibox": {
+    "keyword": "11"
+  },
+  "commands": {
+    "_execute_action": {
+      "description": "Tab Collector action (equivalent to clicking the toolbar icon)"
+    },
+    "save-current-tab": {
+      "description": "Save the current tab to Tab Collector"
+    },
+    "open-collector": {
+      "suggested_key": {
+        "default": "Alt+Shift+1"
+      },
+      "description": "Open Tab Collector"
+    }
+  }
+}

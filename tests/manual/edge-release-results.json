@@ -1,0 +1,43 @@
+{
+  "dateUtc": "2026-03-14T22:05:43.221Z",
+  "edgePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "port": 9229,
+  "extensionId": "fplmoeljaafoanjabjhloolomhkfbhbl",
+  "screenshots": {
+    "options": "tests/assets/screenshots/options-page-edge.png",
+    "collector": "tests/assets/screenshots/collector-page-edge.png",
+    "popup": "tests/assets/screenshots/popup-page-edge.png"
+  },
+  "checks": [
+    {
+      "id": "options-page",
+      "description": "Options page renders settings grid, excluded domains, and command list",
+      "status": "passed"
+    },
+    {
+      "id": "collector-page",
+      "description": "Collector page renders summary cards and saved groups from seeded state",
+      "status": "passed"
+    },
+    {
+      "id": "collector-theme-selection",
+      "description": "Collector Griffin appearance selection switches between dark and light modes",
+      "status": "passed"
+    },
+    {
+      "id": "popup-page",
+      "description": "Popup page renders quick actions, selected tab list, and quick list",
+      "status": "passed"
+    },
+    {
+      "id": "page-context-menu",
+      "description": "Page context menu entries require live right-click validation in an interactive Edge session",
+      "status": "manual-follow-up"
+    },
+    {
+      "id": "native-tab-strip-menu",
+      "description": "Native tab-strip and tab-group header integration remains unsupported by the documented Edge extension API surface",
+      "status": "not-applicable"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Tab Collector popup light preview</title>
+  <desc id="desc">Illustrative light-mode preview of the toolbar popup layout.</desc>
+  <rect width="1200" height="720" fill="#f5f7fb"/>
+  <rect x="350" y="36" width="500" height="648" rx="30" fill="#ffffff" stroke="#cad5e3" stroke-width="2"/>
+  <text x="392" y="88" fill="#ff8c42" font-family="Segoe UI, Arial, sans-serif" font-size="16" letter-spacing="4">TAB COLLECTOR</text>
+  <text x="392" y="120" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">Toolbar menu</text>
+  <rect x="392" y="152" width="416" height="60" rx="14" fill="#ffffff" stroke="#cad5e3"/>
+  <rect x="392" y="214" width="416" height="60" rx="14" fill="#ffffff" stroke="#cad5e3"/>
+  <rect x="392" y="276" width="416" height="60" rx="14" fill="#ffffff" stroke="#cad5e3"/>
+  <rect x="392" y="338" width="416" height="60" rx="14" fill="#ffffff" stroke="#cad5e3"/>
+  <rect x="392" y="400" width="416" height="60" rx="14" fill="#ffffff" stroke="#cad5e3"/>
+  <text x="420" y="189" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Open Tab Collector</text>
+  <text x="420" y="251" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Save current window</text>
+  <text x="420" y="313" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Save current tab</text>
+  <text x="420" y="375" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Save current tab group</text>
+  <text x="420" y="437" fill="#1a2433" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">Exclude current website</text>
+  <rect x="392" y="486" width="416" height="148" rx="18" fill="#ffffff" stroke="#cad5e3"/>
+  <text x="420" y="522" fill="#5a6372" font-family="Segoe UI, Arial, sans-serif" font-size="18">Store selected tabs</text>
+  <rect x="420" y="546" width="360" height="22" rx="10" fill="#eef3fa"/>
+  <rect x="420" y="580" width="300" height="16" rx="8" fill="#479bcc"/>
+  <rect x="610" y="608" width="170" height="34" rx="12" fill="#ff8c42"/>
+  <text x="654" y="631" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Store</text>
+</svg>
