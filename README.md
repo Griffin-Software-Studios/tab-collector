@@ -148,6 +148,12 @@ To refresh the Edge-backed release evidence:
 npm run evidence:edge
 ```
 
+To refresh and verify the required evidence checks/screenshots in one command:
+
+```powershell
+npm run evidence:edge:strict
+```
+
 ## Documentation map
 
 - [Docs registry](docs/README.md)

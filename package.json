@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "node tests/run-tests.js",
-    "evidence:edge": "node tests/manual/capture-edge-evidence.js"
+    "evidence:edge": "node tests/manual/capture-edge-evidence.js",
+    "evidence:edge:verify": "node tests/manual/verify-edge-evidence.js",
+    "evidence:edge:strict": "npm run evidence:edge && npm run evidence:edge:verify"
   }
 }
