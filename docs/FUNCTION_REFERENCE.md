@@ -27,6 +27,7 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 | `openCollector()` | Opens or focuses the collector tab |
 | `syncContextMenus()` | Rebuilds extension page context menus |
 | `performContextMenuStateSync()` | Enables or disables state-dependent menu items |
+| `getContextMenuDiagnostics()` | Returns a runtime snapshot of menu registration/state for evidence automation |
 
 ### Runtime message routes
 
@@ -38,6 +39,7 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 | `saveSelectedTabs` | `captureSelectedTabs()` |
 | `excludeDomain` | `addExcludedDomainFromUrl()` |
 | `openCollector` | `openCollector()` |
+| `getContextMenuDiagnostics` | `getContextMenuDiagnostics()` |
 
 ### Capture flows
 

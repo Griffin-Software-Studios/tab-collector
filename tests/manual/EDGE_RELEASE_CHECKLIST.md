@@ -1,6 +1,6 @@
 # Edge Release Checklist
 
-Generated: 2026-03-21T05:59:44.797Z
+Generated: 2026-03-21T06:35:21.156Z
 
 Edge version path: `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`
 
@@ -23,6 +23,6 @@ Extension ID: `fplmoeljaafoanjabjhloolomhkfbhbl`
 | collector-theme-selection | passed | Collector Griffin appearance selection switches between dark and light modes |
 | collector-tablet-layout | passed | Collector tablet layout stacks each group header and keeps controls inside the viewport |
 | collector-mobile-layout | passed | Collector mobile layout keeps controls and URLs wrapped without horizontal overflow |
+| page-context-menu | passed | Background diagnostics confirm page context-menu registration and page-only scope for collector actions |
 | popup-page | passed | Popup page renders quick actions, selected tab list, and quick list |
-| page-context-menu | manual-follow-up | Page context menu entries require live right-click validation in an interactive Edge session |
 | native-tab-strip-menu | not-applicable | Native tab-strip and tab-group header integration remains unsupported by the documented Edge extension API surface |

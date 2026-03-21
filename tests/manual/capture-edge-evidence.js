@@ -314,6 +314,9 @@ async function main() {
       height: 932
     });
     await setViewport(browser, collectorPage.sessionId, { width: 1600, height: 1400 });
+    results.checks.push(
+      await collectContextMenuDiagnosticsCheck(browser, collectorPage.sessionId)
+    );
 
     const popupPage = await openPage(
       browser,
@@ -334,11 +337,6 @@ async function main() {
       height: 1180
     });
 
-    results.checks.push({
-      id: "page-context-menu",
-      description: "Page context menu entries require live right-click validation in an interactive Edge session",
-      status: "manual-follow-up"
-    });
     results.checks.push({
       id: "native-tab-strip-menu",
       description: "Native tab-strip and tab-group header integration remains unsupported by the documented Edge extension API surface",
@@ -566,6 +564,35 @@ async function collectCollectorResponsiveCheck(browser, sessionId, check) {
     id: check.id,
     description: check.description,
     status: passed ? "passed" : "failed"
+  };
+}
+
+async function collectContextMenuDiagnosticsCheck(browser, sessionId) {
+  const diagnostics = await evaluate(
+    browser,
+    sessionId,
+    `(() => chrome.runtime.sendMessage({ type: "getContextMenuDiagnostics" }))()`
+  );
+  const expectedMenuIds = diagnostics?.expectedMenuIds || [];
+  const registeredMenuIds = diagnostics?.registeredMenuIds || [];
+  const hasAllExpectedMenus =
+    expectedMenuIds.length > 0 &&
+    expectedMenuIds.every((menuId) => registeredMenuIds.includes(menuId));
+  const groupSaveFlagPresent = typeof diagnostics?.saveCurrentGroupEnabled === "boolean";
+  const status =
+    diagnostics?.ok &&
+    diagnostics?.contextMenuEnabled === true &&
+    diagnostics?.pageOnlyContexts === true &&
+    hasAllExpectedMenus &&
+    groupSaveFlagPresent
+      ? "passed"
+      : "failed";
+
+  return {
+    id: "page-context-menu",
+    description:
+      "Background diagnostics confirm page context-menu registration and page-only scope for collector actions",
+    status
   };
 }
 

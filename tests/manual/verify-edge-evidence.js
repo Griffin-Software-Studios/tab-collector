@@ -13,6 +13,7 @@ const REQUIRED_PASSING_CHECKS = [
   "collector-theme-selection",
   "collector-tablet-layout",
   "collector-mobile-layout",
+  "page-context-menu",
   "popup-page"
 ];
 

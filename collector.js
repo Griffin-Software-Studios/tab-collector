@@ -924,12 +924,8 @@ function syncThemeControls() {
 
   nodes.themeSelect.value = theme.id;
   nodes.themeModeSelect.value = normalizeThemeMode(state.settings?.themeMode);
-  // Griffin currently exposes the full appearance switch. Imported palettes
-  // stay on their authored dark treatment until matching light variants ship.
-  nodes.themeModeSelect.disabled = !theme.supportsMode;
-  nodes.themeModeSelect.title = theme.supportsMode
-    ? ""
-    : "Additional appearance modes are coming to this theme.";
+  nodes.themeModeSelect.disabled = false;
+  nodes.themeModeSelect.title = "";
 }
 
 function syncSearchQuery() {
