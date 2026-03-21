@@ -183,13 +183,18 @@ test("collector surface shows the active search summary and highlight treatment"
   );
   assert.match(
     tabsCss,
-    /@media \(max-width: 860px\)[\s\S]*?\.collector-group-header\s*\{[\s\S]*?justify-content:\s*flex-start;[\s\S]*?gap:\s*12px;[\s\S]*?\}/
+    /@media \(max-width: 1024px\)[\s\S]*?\.collector-group-header\s*\{[\s\S]*?justify-content:\s*flex-start;[\s\S]*?gap:\s*12px;[\s\S]*?\}/
+  );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 860px\)[\s\S]*?\.collector-input-grid\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
   );
   assert.match(
     tabsCss,
     /@media \(max-width: 860px\)[\s\S]*?\.collector-group-actions\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);[\s\S]*?width:\s*100%;[\s\S]*?\}/
   );
   assert.match(tabsCss, /\.collector-tabs \.oneLineWithEllipsis/);
+  assert.match(tabsCss, /\.collector-tabs \.tabLink\s*\{[\s\S]*?min-width:\s*0;/);
   assert.match(tabsCss, /\.collector-tabs \.tabUrlText/);
 });
 

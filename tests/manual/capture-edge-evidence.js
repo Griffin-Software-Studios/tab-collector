@@ -252,6 +252,68 @@ async function main() {
       width: 1600,
       height: 1400
     });
+    results.checks.push(
+      await collectCollectorResponsiveCheck(browser, collectorPage.sessionId, {
+        id: "collector-tablet-layout",
+        description:
+          "Collector tablet layout stacks each group header and keeps controls inside the viewport",
+        width: 1024,
+        height: 1366,
+        expression: `(() => {
+          const firstGroupHeader = document.querySelector('.collector-group-header');
+          const controls = document.querySelector('.collector-header-controls');
+          if (!firstGroupHeader || !controls) {
+            return false;
+          }
+          const groupHeaderDirection = getComputedStyle(firstGroupHeader).flexDirection;
+          const controlsRect = controls.getBoundingClientRect();
+          return (
+            groupHeaderDirection === 'column' &&
+            controlsRect.left >= 0 &&
+            controlsRect.right <= window.innerWidth + 1
+          );
+        })()`
+      })
+    );
+    results.screenshots.collectorTablet = await captureScreenshot(browser, collectorPage, {
+      outputPath: path.join(screenshotsDir, "collector-page-tablet-edge.png"),
+      width: 1024,
+      height: 1366
+    });
+    results.checks.push(
+      await collectCollectorResponsiveCheck(browser, collectorPage.sessionId, {
+        id: "collector-mobile-layout",
+        description:
+          "Collector mobile layout keeps controls and URLs wrapped without horizontal overflow",
+        width: 430,
+        height: 932,
+        expression: `(() => {
+          const inputGrid = document.querySelector('.collector-input-grid');
+          const headerControls = document.querySelector('.collector-header-controls');
+          const linkText = document.querySelector('.collector-tabs .tabUrlText');
+          if (!inputGrid || !headerControls || !linkText) {
+            return false;
+          }
+          const columns = getComputedStyle(inputGrid).gridTemplateColumns.split(' ').filter(Boolean).length;
+          const controlsRect = headerControls.getBoundingClientRect();
+          const linkWrap = getComputedStyle(linkText).overflowWrap;
+          const documentFits = document.documentElement.scrollWidth <= window.innerWidth + 1;
+          return (
+            columns === 1 &&
+            controlsRect.left >= 0 &&
+            controlsRect.right <= window.innerWidth + 1 &&
+            (linkWrap === 'break-word' || linkWrap === 'anywhere') &&
+            documentFits
+          );
+        })()`
+      })
+    );
+    results.screenshots.collectorMobile = await captureScreenshot(browser, collectorPage, {
+      outputPath: path.join(screenshotsDir, "collector-page-mobile-edge.png"),
+      width: 430,
+      height: 932
+    });
+    await setViewport(browser, collectorPage.sessionId, { width: 1600, height: 1400 });
 
     const popupPage = await openPage(
       browser,
@@ -418,6 +480,19 @@ async function closePage(browser, sessionId, targetId) {
   }
 }
 
+async function setViewport(browser, sessionId, { width, height }) {
+  await browser.send(
+    "Emulation.setDeviceMetricsOverride",
+    {
+      width,
+      height,
+      deviceScaleFactor: 1,
+      mobile: false
+    },
+    sessionId
+  );
+}
+
 async function seedDemoState(browser, sessionId) {
   const expression = `(async () => {
     await chrome.storage.local.set(${JSON.stringify(demoState)});
@@ -472,6 +547,19 @@ async function evaluate(browser, sessionId, expression) {
 }
 
 async function collectPageCheck(browser, sessionId, check) {
+  const passed = await evaluate(browser, sessionId, check.expression);
+
+  return {
+    id: check.id,
+    description: check.description,
+    status: passed ? "passed" : "failed"
+  };
+}
+
+async function collectCollectorResponsiveCheck(browser, sessionId, check) {
+  await setViewport(browser, sessionId, { width: check.width, height: check.height });
+  await waitForDocumentReady(browser, sessionId);
+  await sleep(100);
   const passed = await evaluate(browser, sessionId, check.expression);
 
   return {
@@ -612,6 +700,8 @@ async function waitForProcessExit(childProcess) {
 function renderChecklist(results) {
   const screenshotLines = [
     `- Collector page: \`${results.screenshots.collector || "not captured"}\``,
+    `- Collector page (tablet): \`${results.screenshots.collectorTablet || "not captured"}\``,
+    `- Collector page (mobile): \`${results.screenshots.collectorMobile || "not captured"}\``,
     `- Options page: \`${results.screenshots.options || "not captured"}\``,
     `- Popup page: \`${results.screenshots.popup || "not captured"}\``
   ];

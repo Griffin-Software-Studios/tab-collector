@@ -760,6 +760,12 @@ a:focus-visible {
 .collector-tabs .tabLinkText {
   display: block;
   overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.collector-tabs .tabLink {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .collector-tabs .tabUrl {
@@ -779,6 +785,7 @@ a:focus-visible {
 
 .collector-tabs .tabUrlText {
   display: block;
+  white-space: normal;
   overflow-wrap: anywhere;
   word-break: break-word;
 }
@@ -1016,6 +1023,10 @@ a:focus-visible {
   align-items: end;
 }
 
+.collector-input-grid > * {
+  min-width: 0;
+}
+
 .collector-search-field {
   display: grid;
   gap: 7px;
@@ -1037,7 +1048,7 @@ a:focus-visible {
 .collector-export-field {
   display: grid;
   gap: 7px;
-  min-width: 176px;
+  min-width: 0;
   flex: 1 1 176px;
 }
 
@@ -1190,6 +1201,8 @@ a:focus-visible {
   font-weight: 700;
   color: var(--gs-text);
   line-height: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .collector-summary-search {
@@ -1824,6 +1837,21 @@ body.collector-confirm-open {
 }
 
 @media (max-width: 1024px) {
+  .collector-summary-row {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  }
+
+  .collector-group-header {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  .collector-group-copy {
+    flex-basis: auto;
+  }
+
   .collector-group-actions {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 132px), 1fr));
@@ -1864,19 +1892,13 @@ body.collector-confirm-open {
     grid-template-columns: 1fr;
   }
 
-  .collector-group-header {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 12px;
-  }
-
-  .collector-group-copy {
-    flex-basis: auto;
-  }
-
   .collector-group-actions {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .collector-group-copy,
+  .collector-group-actions {
     width: 100%;
   }
 
