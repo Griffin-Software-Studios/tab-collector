@@ -1,0 +1,64 @@
+<#
+Purpose: Apply strict GitHub repository governance controls for the Tab Collector repository.
+Usage:   pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO"
+#>
+
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$Repo,
+
+    [string[]]$RequiredStatusChecks = @("Node tests", "Markdown lint")
+)
+
+$ErrorActionPreference = "Stop"
+
+if (-not (Get-Command gh -ErrorAction SilentlyContinue)) {
+    throw "GitHub CLI (gh) is required."
+}
+
+Write-Host "Applying repository merge settings baseline for $Repo..."
+gh api -X PATCH "repos/$Repo" `
+    -f allow_merge_commit=true `
+    -f allow_squash_merge=true `
+    -f allow_rebase_merge=false `
+    -f delete_branch_on_merge=true `
+    -f has_issues=true `
+    -f has_wiki=false `
+    -f auto_init=false | Out-Null
+
+$protectionPayload = @{
+    required_status_checks           = @{
+        strict   = $true
+        contexts = $RequiredStatusChecks
+    }
+    enforce_admins                   = $true
+    required_pull_request_reviews    = @{
+        dismiss_stale_reviews           = $true
+        require_code_owner_reviews      = $true
+        required_approving_review_count = 1
+    }
+    restrictions                     = $null
+    required_linear_history          = $false
+    allow_force_pushes               = $false
+    allow_deletions                  = $false
+    block_creations                  = $false
+    required_conversation_resolution = $true
+    lock_branch                      = $false
+    allow_fork_syncing               = $false
+}
+
+$tempFile = [System.IO.Path]::GetTempFileName()
+try {
+    $protectionPayload | ConvertTo-Json -Depth 10 | Set-Content -Path $tempFile -Encoding utf8
+
+    Write-Host "Applying strict branch protection on main for $Repo..."
+    gh api -X PUT "repos/$Repo/branches/main/protection" --input $tempFile | Out-Null
+}
+finally {
+    Remove-Item $tempFile -ErrorAction SilentlyContinue
+}
+
+Write-Host "Strict governance baseline applied for $Repo."
+Write-Host "Verifying effective protection..."
+gh api "repos/$Repo/branches/main/protection"

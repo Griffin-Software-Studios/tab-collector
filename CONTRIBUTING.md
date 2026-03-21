@@ -124,3 +124,23 @@ Apply or repair labels with:
 ```powershell
 pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/tab-collector"
 ```
+
+## Strict repository governance
+
+Apply strict `main` protection and merge-policy settings with:
+
+```powershell
+pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+```
+
+Defaults enforced by the script:
+
+- `main` branch protection enabled
+- require pull request before merge
+- require one approving review
+- require CODEOWNERS review
+- dismiss stale reviews on new commits
+- require status checks (`Node tests`, `Markdown lint`) and up-to-date branch
+- require conversation resolution
+- block force pushes and branch deletion
+- enforce protections for admins
