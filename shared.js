@@ -79,7 +79,7 @@ export const SETTINGS_SECTIONS = [
   {
     key: "theme",
     title: "Collector theme",
-    note: "Griffin supports system, light, and dark appearance today. The imported palettes keep their current dark styling for now.",
+    note: "Every theme supports system, light, and dark appearance modes.",
     options: THEMES.map((theme) => ({
       value: theme.id,
       label: theme.label,
@@ -89,7 +89,7 @@ export const SETTINGS_SECTIONS = [
   {
     key: "themeMode",
     title: "Theme appearance",
-    note: "This currently changes the Griffin theme. Additional themes will gain light and dark variants next.",
+    note: "Select a fixed mode or follow your system appearance.",
     options: [
       {
         value: THEME_MODES.SYSTEM,
