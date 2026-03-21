@@ -1,7 +1,7 @@
 <!--
 File: ENGINEERING_NOTES.md
 Created: 2026/03/14 15:36:43
-Modified: 2026/03/14 15:36:43
+Modified: 2026/03/21 01:18:00
 Project: Tab Collector
 Repo: Tabs
 Purpose: Capture practical engineering constraints and near-term decisions.
@@ -158,6 +158,14 @@ Near-term likely work:
 1. add light and dark variants for Cobalt, Ember, and Forest
 2. continue manual tablet/mobile passes on collector group layouts
 3. refresh Edge evidence after the manual script updates
+
+## Review queue note (2026-03-21)
+
+- PR `#4` is intentionally left open for required user/Copilot review.
+- Additional work should continue in isolated branches to avoid expanding PR
+  scope while review is pending.
+- Current parallel branch for follow-up work:
+  `feature/theme-mode-variants`.
 
 ## Store-preparation notes
 
