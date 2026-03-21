@@ -189,6 +189,23 @@ test("collector surface shows the active search summary and highlight treatment"
     tabsCss,
     /@media \(max-width: 860px\)[\s\S]*?\.collector-group-actions\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);[\s\S]*?width:\s*100%;[\s\S]*?\}/
   );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 860px\)[\s\S]*?\.collector-input-grid\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
+  );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 720px\)[\s\S]*?\.collector-header-buttons\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
+  );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 720px\)[\s\S]*?\.collector-group-actions\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
+  );
+  assert.match(tabsCss, /\.collector-tabs \.tabLinkText\s*\{[\s\S]*?overflow-wrap:\s*anywhere;/);
+  assert.match(
+    tabsCss,
+    /\.collector-tabs \.tabUrl\s*\{[\s\S]*?min-width:\s*0;[\s\S]*?overflow-wrap:\s*anywhere;/
+  );
   assert.match(tabsCss, /\.collector-tabs \.oneLineWithEllipsis/);
   assert.match(tabsCss, /\.collector-tabs \.tabUrlText/);
 });
