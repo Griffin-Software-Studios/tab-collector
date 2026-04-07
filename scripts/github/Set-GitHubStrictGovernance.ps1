@@ -1,6 +1,12 @@
 <#
 Purpose: Apply strict GitHub repository governance controls for the Tab Collector repository.
 Usage:   pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO"
+         pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO" -BypassUsers @("username")
+
+Single-contributor provision: pass -BypassUsers with the repo owner login so
+the owner can merge their own pull requests when CI passes and all review
+threads are resolved. This satisfies the single-contributor gate requirement
+without removing review or status-check enforcement for any other actor.
 #>
 
 [CmdletBinding()]
@@ -8,7 +14,11 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Repo,
 
-    [string[]]$RequiredStatusChecks = @("Node tests", "Markdown lint")
+    [string[]]$RequiredStatusChecks = @("Node tests", "Markdown lint"),
+
+    # Logins allowed to bypass pull-request review requirements.
+    # Use for single-contributor repos where the owner must merge their own PRs.
+    [string[]]$BypassUsers = @()
 )
 
 $ErrorActionPreference = "Stop"
@@ -59,6 +69,11 @@ $protectionPayload = @{
         dismiss_stale_reviews           = $true
         require_code_owner_reviews      = $true
         required_approving_review_count = 1
+        bypass_pull_request_allowances  = @{
+            users = $BypassUsers
+            teams = @()
+            apps  = @()
+        }
     }
     restrictions                     = $null
     required_linear_history          = $false
