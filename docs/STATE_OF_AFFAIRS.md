@@ -3,7 +3,7 @@ File: STATE_OF_AFFAIRS.md
 Created: 2026/03/15
 Modified: 2026/03/21
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Capture a concise engineering handoff snapshot for the current repo
 state.
 Description: Summarizes what is working now, what changed recently, and the
@@ -74,9 +74,7 @@ Snapshot date: 2026-03-21
 - [shared.js](../shared.js)
 - [collector.js](../collector.js)
 - [tabs.css](../tabs.css)
-- [tests/manual/capture-edge-evidence.js](
-  ../tests/manual/capture-edge-evidence.js
-  )
+- [tests/manual/capture-edge-evidence.js](../tests/manual/capture-edge-evidence.js)
 - [docs/MENU_OPTIONS_REFERENCE.md](./MENU_OPTIONS_REFERENCE.md)
 
 ## Most likely next steps

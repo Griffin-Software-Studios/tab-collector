@@ -3,7 +3,7 @@ File: DOCUMENTATION_CONNECTION_RUBRIC.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Define the expected connection depth between code, docs, and
 governance.
 Description: Provides a rubric for deciding whether a change is documented well

@@ -32,18 +32,12 @@ next to the extension codebase.
 
 ## Local security records
 
-- [`../security/ai-integrations/README.md`](
-  ../security/ai-integrations/README.md
-  )
-- [`../security/ai-integrations/ai-int-2026-03-14-001.yaml`](
-  ../security/ai-integrations/ai-int-2026-03-14-001.yaml
-  )
+- [`../security/ai-integrations/README.md`](../security/ai-integrations/README.md)
+- [`../security/ai-integrations/ai-int-2026-03-14-001.yaml`](../security/ai-integrations/ai-int-2026-03-14-001.yaml)
 
 ## Validation evidence
 
-- [`../tests/manual/EDGE_RELEASE_CHECKLIST.md`](
-  ../tests/manual/EDGE_RELEASE_CHECKLIST.md
-  )
+- [`../tests/manual/EDGE_RELEASE_CHECKLIST.md`](../tests/manual/EDGE_RELEASE_CHECKLIST.md)
 - [`../tests/assets/README.md`](../tests/assets/README.md)
 
 ## Internal governance references
