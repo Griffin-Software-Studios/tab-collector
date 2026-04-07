@@ -10,8 +10,10 @@ Edge extension codebase, documentation set, and release-preparation workflow.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This file is intentionally repo-scoped and should be updated only by explicit request.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This file is intentionally repo-scoped and should be updated only by
+explicit request.
 -->
 
 # AGENTS.md - Tab Collector Repository Rules

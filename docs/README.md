@@ -10,8 +10,10 @@ notes, and local security records to their intended usage.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This is a project-local registry, not a copy of Org-Security-Docs canonical content.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This is a project-local registry, not a copy of
+Org-Security-Docs canonical content.
 -->
 
 # Documentation Registry
@@ -30,12 +32,18 @@ next to the extension codebase.
 
 ## Local security records
 
-- [`../security/ai-integrations/README.md`](../security/ai-integrations/README.md)
-- [`../security/ai-integrations/ai-int-2026-03-14-001.yaml`](../security/ai-integrations/ai-int-2026-03-14-001.yaml)
+- [`../security/ai-integrations/README.md`](
+  ../security/ai-integrations/README.md
+  )
+- [`../security/ai-integrations/ai-int-2026-03-14-001.yaml`](
+  ../security/ai-integrations/ai-int-2026-03-14-001.yaml
+  )
 
 ## Validation evidence
 
-- [`../tests/manual/EDGE_RELEASE_CHECKLIST.md`](../tests/manual/EDGE_RELEASE_CHECKLIST.md)
+- [`../tests/manual/EDGE_RELEASE_CHECKLIST.md`](
+  ../tests/manual/EDGE_RELEASE_CHECKLIST.md
+  )
 - [`../tests/assets/README.md`](../tests/assets/README.md)
 
 ## Internal governance references

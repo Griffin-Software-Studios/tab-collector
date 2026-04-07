@@ -5,11 +5,13 @@ Modified: 2026/03/21
 Project: Tab Collector
 Repo: tab-collector
 Purpose: Publish a repository security disclosure process and baseline policy.
-Description: Defines how to report vulnerabilities and what response behavior to expect.
+Description: Defines how to report vulnerabilities and what response behavior
+to expect.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Public
-Security: Do not include secrets or active exploitation details in public reports.
+Security: Do not include secrets or active exploitation details in public
+reports.
 Notes: Keep this path stable for GitHub security tooling.
 -->
 

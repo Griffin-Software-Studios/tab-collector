@@ -10,7 +10,8 @@ and canonical issue-label baseline aligned to GSS governance standards.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: Adapted from Org-Security-Docs governance standards.
 -->
 
@@ -122,7 +123,7 @@ This repository uses the GSS canonical baseline:
 Apply or repair labels with:
 
 ```powershell
-pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "<ORG>/<REPO>"
 ```
 
 ## Strict repository governance
@@ -130,7 +131,14 @@ pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/t
 Apply strict `main` protection and merge-policy settings with:
 
 ```powershell
-pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "<ORG>/<REPO>"
+```
+
+Default bootstrap order for new GSS repositories:
+
+```powershell
+pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "<ORG>/<REPO>"
+pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "<ORG>/<REPO>"
 ```
 
 Defaults enforced by the script:
@@ -144,3 +152,17 @@ Defaults enforced by the script:
 - require conversation resolution
 - block force pushes and branch deletion
 - enforce protections for admins
+
+## Governance exceptions policy
+
+Strict governance is the default. Exceptions are allowed only when repository
+context requires it (for example, an infra mirror, archived sandbox, or
+temporary migration lane).
+
+When applying an exception:
+
+1. Document the exact deviation and rationale in `docs/ENGINEERING_NOTES.md`.
+2. Reference the canonical control baseline in
+   `s:/Security/Org-Security-Docs/`.
+3. Record the approver and date in the same note.
+4. Keep the deviation minimal and time-bounded when possible.
