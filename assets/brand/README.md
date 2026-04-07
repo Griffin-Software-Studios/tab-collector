@@ -50,15 +50,11 @@ icons, and packaging/export workflows.
 
 ### `tab-collector-master-1000.png`
 
-![tab-collector-master-1000 preview](./tab-collector-master-1000.png)
-
 - Format: PNG
 - Dimensions: `1000x1000`
 - Typical usage: master raster source for generating derivatives
 
 ### `tab-collector-exact.svg`
-
-![tab-collector-exact preview](./tab-collector-exact.svg)
 
 - Format: SVG (embedded image)
 - Dimensions: `1000x1000` (`viewBox`)

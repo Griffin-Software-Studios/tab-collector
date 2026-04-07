@@ -8,8 +8,8 @@ baseline for repositories in this organization.
 From repo root:
 
 ```powershell
-pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "<ORG>/<REPO>"
-pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "<ORG>/<REPO>"
+pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "Griffin-Software-Studios/tab-collector"
+pwsh -File scripts/github/Set-GitHubLabels.ps1 -Repo "Griffin-Software-Studios/tab-collector"
 ```
 
 Recommended order:
