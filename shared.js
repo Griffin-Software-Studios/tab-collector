@@ -21,6 +21,7 @@ export const TOOLBAR_ACTIONS = Object.freeze({
 
 export const MESSAGE_TYPES = Object.freeze({
   OPEN_COLLECTOR: "openCollector",
+  GET_CONTEXT_MENU_DIAGNOSTICS: "getContextMenuDiagnostics",
   SAVE_CURRENT_WINDOW: "saveCurrentWindow",
   SAVE_CURRENT_TAB: "saveCurrentTab",
   SAVE_CURRENT_GROUP: "saveCurrentGroup",
@@ -79,7 +80,7 @@ export const SETTINGS_SECTIONS = [
   {
     key: "theme",
     title: "Collector theme",
-    note: "Griffin supports system, light, and dark appearance today. The imported palettes keep their current dark styling for now.",
+    note: "Every theme supports system, light, and dark appearance modes.",
     options: THEMES.map((theme) => ({
       value: theme.id,
       label: theme.label,
@@ -89,7 +90,7 @@ export const SETTINGS_SECTIONS = [
   {
     key: "themeMode",
     title: "Theme appearance",
-    note: "This currently changes the Griffin theme. Additional themes will gain light and dark variants next.",
+    note: "Select a fixed mode or follow your system appearance.",
     options: [
       {
         value: THEME_MODES.SYSTEM,

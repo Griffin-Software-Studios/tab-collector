@@ -93,10 +93,9 @@ Notes: User-facing copy should stay aligned with this reference.
 
 ### Appearance
 
-- Chooses the active appearance mode for the current theme when supported.
-- Griffin currently supports `system`, `light`, and `dark`.
-- Imported palettes currently keep their dark/base treatment until paired light
-  variants are added.
+- Chooses the active appearance mode for the current theme.
+- Griffin, Cobalt, Ember, and Forest each support `system`, `light`, and
+  `dark`.
 
 ### Export format
 
@@ -142,6 +141,9 @@ The extension currently supports these actions from the page context menu:
 - Open Tab Collector
 - Exclude website from Tab Collector
 
+Release evidence now validates these registrations through background
+diagnostics (`getContextMenuDiagnostics`) during `npm run evidence:edge:strict`.
+
 ### Important limitation
 
 Chromium/Edge extension APIs do not currently provide a documented way to place
@@ -157,9 +159,8 @@ the page context menu instead.
 
 ### Theme appearance
 
-- Controls whether the Griffin theme follows system theme or uses a fixed light
-  or dark appearance.
-- Additional themes will gain appearance variants later.
+- Controls whether the selected theme follows system theme or uses a fixed
+  light or dark appearance.
 
 ### At browser startup
 

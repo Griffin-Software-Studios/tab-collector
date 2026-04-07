@@ -16,3 +16,17 @@ To refresh the current evidence set:
 ```powershell
 npm run evidence:edge
 ```
+
+To refresh and validate the evidence set in one step:
+
+```powershell
+npm run evidence:edge:strict
+```
+
+The script currently captures:
+
+- Collector (desktop)
+- Collector (tablet)
+- Collector (mobile)
+- Popup
+- Options

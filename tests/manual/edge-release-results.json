@@ -1,11 +1,13 @@
 {
-  "dateUtc": "2026-03-14T22:05:43.221Z",
+  "dateUtc": "2026-03-21T06:35:21.156Z",
   "edgePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   "port": 9229,
   "extensionId": "fplmoeljaafoanjabjhloolomhkfbhbl",
   "screenshots": {
     "options": "tests/assets/screenshots/options-page-edge.png",
     "collector": "tests/assets/screenshots/collector-page-edge.png",
+    "collectorTablet": "tests/assets/screenshots/collector-page-tablet-edge.png",
+    "collectorMobile": "tests/assets/screenshots/collector-page-mobile-edge.png",
     "popup": "tests/assets/screenshots/popup-page-edge.png"
   },
   "checks": [
@@ -25,14 +27,24 @@
       "status": "passed"
     },
     {
-      "id": "popup-page",
-      "description": "Popup page renders quick actions, selected tab list, and quick list",
+      "id": "collector-tablet-layout",
+      "description": "Collector tablet layout stacks each group header and keeps controls inside the viewport",
+      "status": "passed"
+    },
+    {
+      "id": "collector-mobile-layout",
+      "description": "Collector mobile layout keeps controls and URLs wrapped without horizontal overflow",
       "status": "passed"
     },
     {
       "id": "page-context-menu",
-      "description": "Page context menu entries require live right-click validation in an interactive Edge session",
-      "status": "manual-follow-up"
+      "description": "Background diagnostics confirm page context-menu registration and page-only scope for collector actions",
+      "status": "passed"
+    },
+    {
+      "id": "popup-page",
+      "description": "Popup page renders quick actions, selected tab list, and quick list",
+      "status": "passed"
     },
     {
       "id": "native-tab-strip-menu",

@@ -85,7 +85,7 @@ test("applyDocumentTheme sets and clears the root theme contract", () => {
   assert.equal(root.style.colorScheme, "");
 });
 
-test("applyDocumentTheme sets named custom themes without a theme mode attribute", () => {
+test("applyDocumentTheme applies named custom themes across appearance modes", () => {
   const root = createRoot();
 
   assert.deepEqual(
@@ -96,6 +96,17 @@ test("applyDocumentTheme sets named custom themes without a theme mode attribute
     }
   );
   assert.equal(root.dataset.theme, "cobalt");
-  assert.equal(root.dataset.themeMode, undefined);
+  assert.equal(root.dataset.themeMode, "light");
+  assert.equal(root.style.colorScheme, "light");
+
+  assert.deepEqual(
+    theme.applyDocumentTheme({ theme: "cobalt", themeMode: "dark" }, root),
+    {
+      theme: "cobalt",
+      themeMode: "dark"
+    }
+  );
+  assert.equal(root.dataset.theme, "cobalt");
+  assert.equal(root.dataset.themeMode, "dark");
   assert.equal(root.style.colorScheme, "dark");
 });

@@ -155,6 +155,10 @@ test("collector surface shows the active search summary and highlight treatment"
   assert.match(collectorJs, /refreshState\(\{\s*preserveViewport:\s*true\s*\}\)/);
   assert.match(collectorJs, /refreshState\(\{\s*showLoadingState:\s*true\s*\}\)/);
   assert.match(collectorJs, /window\.scrollTo\(/);
+  assert.match(
+    collectorJs,
+    /if \(action === "toggle-pin"\)\s*\{[\s\S]*?updateLocalGroupFlag\(groupId,\s*"pinned",\s*response\?\.value\);[\s\S]*?render\(\);[\s\S]*?setStatus\(response\?\.value \? "Pinned group tabs in the browser\." : "Unpinned group tabs from the browser\."\);[\s\S]*?return;[\s\S]*?\}/
+  );
   assert.match(collectorJs, /Pinned group tabs in the browser\./);
   assert.match(collectorJs, /Unpinned group tabs from the browser\./);
   assert.doesNotMatch(collectorJs, /Unlock this group to delete it/);
@@ -183,13 +187,31 @@ test("collector surface shows the active search summary and highlight treatment"
   );
   assert.match(
     tabsCss,
-    /@media \(max-width: 860px\)[\s\S]*?\.collector-group-header\s*\{[\s\S]*?justify-content:\s*flex-start;[\s\S]*?gap:\s*12px;[\s\S]*?\}/
+    /@media \(max-width: 1024px\)[\s\S]*?\.collector-group-header\s*\{[\s\S]*?justify-content:\s*flex-start;[\s\S]*?gap:\s*12px;[\s\S]*?\}/
+  );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 860px\)[\s\S]*?\.collector-input-grid\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
   );
   assert.match(
     tabsCss,
     /@media \(max-width: 860px\)[\s\S]*?\.collector-group-actions\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*minmax\(0,\s*1fr\)\);[\s\S]*?width:\s*100%;[\s\S]*?\}/
   );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 720px\)[\s\S]*?\.collector-header-buttons\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
+  );
+  assert.match(
+    tabsCss,
+    /@media \(max-width: 720px\)[\s\S]*?\.collector-group-actions\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
+  );
+  assert.match(tabsCss, /\.collector-tabs \.tabLinkText\s*\{[\s\S]*?overflow-wrap:\s*anywhere;/);
+  assert.match(
+    tabsCss,
+    /\.collector-tabs \.tabUrl\s*\{[\s\S]*?min-width:\s*0;[\s\S]*?overflow-wrap:\s*anywhere;/
+  );
   assert.match(tabsCss, /\.collector-tabs \.oneLineWithEllipsis/);
+  assert.match(tabsCss, /\.collector-tabs \.tabLink\s*\{[\s\S]*?min-width:\s*0;/);
   assert.match(tabsCss, /\.collector-tabs \.tabUrlText/);
 });
 
@@ -199,6 +221,7 @@ test("background wiring routes save actions through registries", async () => {
   for (const token of [
     "TOOLBAR_ACTIONS.SAVE_WINDOW",
     "TOOLBAR_ACTIONS.SAVE_CURRENT",
+    "MESSAGE_TYPES.GET_CONTEXT_MENU_DIAGNOSTICS",
     "MESSAGE_TYPES.SAVE_CURRENT_WINDOW",
     "MESSAGE_TYPES.SAVE_CURRENT_TAB",
     "MESSAGE_TYPES.SAVE_CURRENT_GROUP",
@@ -212,6 +235,7 @@ test("background wiring routes save actions through registries", async () => {
   }
 
   for (const functionName of [
+    "getContextMenuDiagnostics",
     "saveCurrentWindow",
     "saveCurrentTab",
     "saveCurrentGroup",

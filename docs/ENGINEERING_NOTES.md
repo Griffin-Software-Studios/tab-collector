@@ -85,6 +85,23 @@ Current state:
   dark/base palette
 - collector and popup surfaces use the shared theme application helper
 
+### Custom theme system-mode OS change listener gap
+
+When a non-Griffin theme is used with `themeMode: "system"`,
+`applyDocumentTheme` in `theme.js` resolves the effective mode once at apply
+time and writes it to `data-theme-mode`. There is no
+`matchMedia('(prefers-color-scheme: dark)')` change listener, so if the OS
+color scheme changes while the page is open the custom theme palette does not
+update until the next explicit `applyDocumentTheme` call.
+
+Griffin is not affected — it leaves `data-theme-mode` unset for `system` mode
+and relies on CSS `prefers-color-scheme` media queries directly.
+
+Deferred: resolving this for custom themes requires either adding a change
+listener in `applyDocumentTheme` or restructuring custom-theme CSS into
+`prefers-color-scheme` media queries. Tracked for follow-up before store
+submission.
+
 ### Save semantics
 
 - window save prefers highlighted tabs first
