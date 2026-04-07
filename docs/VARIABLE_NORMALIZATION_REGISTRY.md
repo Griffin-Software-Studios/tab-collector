@@ -3,7 +3,7 @@ File: VARIABLE_NORMALIZATION_REGISTRY.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Record naming conventions and key identifiers used by the extension.
 Description: Establishes a first-pass normalization registry for storage keys,
 message types, menu IDs, and user-facing naming drift inside the repo.

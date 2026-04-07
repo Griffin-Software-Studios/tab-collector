@@ -3,7 +3,7 @@ File: AGENTS.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Define repository-specific contribution and automation rules.
 Description: Adapts the organization security-documents AGENTS guidance to the
 Edge extension codebase, documentation set, and release-preparation workflow.

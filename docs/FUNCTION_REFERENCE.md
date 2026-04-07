@@ -3,7 +3,7 @@ File: FUNCTION_REFERENCE.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Document the main functions and entry points in the extension.
 Description: Provides a starter reference for capture, restore, state, and UI
 flows so code changes can be connected to the right surfaces and docs.
