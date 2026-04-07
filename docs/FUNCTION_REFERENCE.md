@@ -34,23 +34,23 @@ entry points.
 
 | Message type | Target implementation |
 | --- | --- |
-| `saveCurrentWindow` | `captureCurrentWindow()` |
-| `saveCurrentTab` | `captureCurrentTab()` |
-| `saveCurrentGroup` | `captureCurrentGroup()` |
-| `saveSelectedTabs` | `captureSelectedTabs()` |
+| `saveCurrentWindow` | `saveCurrentWindow()` |
+| `saveCurrentTab` | `saveCurrentTab()` |
+| `saveCurrentGroup` | `saveCurrentGroup()` |
+| `saveSelectedTabs` | `saveSelectedTabs()` |
 | `excludeDomain` | `addExcludedDomainFromUrl()` |
 | `openCollector` | `openCollector()` |
 
-### Capture flows
+### Save flows
 
 | Function | Purpose |
 | --- | --- |
-| `captureCurrentWindow()` | Captures highlighted tabs, active group, or tabs |
-| `captureCurrentTab()` | Captures active tab and prefers eligible destination |
-| `captureCurrentGroup()` | Captures every tab in the active browser tab group |
-| `captureSelectedTabs()` | Captures an explicit set of tab IDs from the popup |
-| `captureTabs()` | Shared capture pipeline for filtering, dedupe, and storage |
-| `getWindowCaptureTabs()` | Resolves selected tabs, active group, or window |
+| `saveCurrentWindow()` | Saves highlighted tabs, active group, or full window |
+| `saveCurrentTab()` | Saves active tab and prefers eligible destination |
+| `saveCurrentGroup()` | Saves every tab in the active browser tab group |
+| `saveSelectedTabs()` | Saves an explicit set of tab IDs from the popup |
+| `saveTabsToCollector()` | Save pipeline for filtering, dedupe, and storage |
+| `getTabsForWindowSave()` | Resolves selected tabs, active group, or window |
 
 ### Restore and group mutation
 
