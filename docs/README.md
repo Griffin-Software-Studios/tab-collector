@@ -3,15 +3,17 @@ File: README.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Provide a documentation registry for the Tab Collector repository.
 Description: Links the initial project docs, governance overlays, engineering
 notes, and local security records to their intended usage.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This is a project-local registry, not a copy of Org-Security-Docs canonical content.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This is a project-local registry, not a copy of
+Org-Security-Docs canonical content.
 -->
 
 # Documentation Registry

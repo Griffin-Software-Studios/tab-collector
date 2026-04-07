@@ -3,14 +3,15 @@ File: MENU_OPTIONS_REFERENCE.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Explain the extension's menus, actions, and option surfaces.
 Description: Documents the popup actions, page context-menu actions, options
 settings, keyboard command, and current browser-platform limitations.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: User-facing copy should stay aligned with this reference.
 -->
 

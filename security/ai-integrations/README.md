@@ -3,15 +3,17 @@ File: README.md
 Created: 2026/03/14 15:36:43
 Modified: 2026/03/14 15:36:43
 Project: Tab Collector
-Repo: Tabs
+Repo: tab-collector
 Purpose: Explain project-local AI integration records for this repository.
 Description: Documents where AI-assisted development records live and how they
 should be treated while the repo is prepared for stronger governance alignment.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: These records are metadata-only and should not contain prompts with sensitive data.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: These records are metadata-only and should not contain prompts with
+sensitive data.
 -->
 
 # AI Integration Records
