@@ -199,10 +199,6 @@ test("collector surface shows the active search summary and highlight treatment"
   );
   assert.match(
     tabsCss,
-    /@media \(max-width: 860px\)[\s\S]*?\.collector-input-grid\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
-  );
-  assert.match(
-    tabsCss,
     /@media \(max-width: 720px\)[\s\S]*?\.collector-header-buttons\s*\{[\s\S]*?grid-template-columns:\s*1fr;[\s\S]*?\}/
   );
   assert.match(

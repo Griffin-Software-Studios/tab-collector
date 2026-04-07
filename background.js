@@ -306,7 +306,7 @@ async function performContextMenuSync() {
       id: menu.id,
       title: menu.title,
       contexts: menu.contexts,
-      enabled: menu.enabled
+      ...(typeof menu.enabled === "boolean" ? { enabled: menu.enabled } : {})
     });
   }
 
