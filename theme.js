@@ -16,28 +16,24 @@ export const THEMES = Object.freeze([
     id: THEME_IDS.GRIFFIN,
     label: "Griffin",
     description: "Griffin Software Studios styling with system, light, and dark appearance modes.",
-    supportsMode: true,
     colorScheme: "light dark"
   },
   {
     id: THEME_IDS.COBALT,
     label: "Cobalt",
     description: "Deep blue glass panels with signal amber accents.",
-    supportsMode: true,
     colorScheme: "light dark"
   },
   {
     id: THEME_IDS.EMBER,
     label: "Ember",
     description: "Warm copper highlights on a graphite base.",
-    supportsMode: true,
     colorScheme: "light dark"
   },
   {
     id: THEME_IDS.FOREST,
     label: "Forest",
     description: "Green-teal surfaces with mint contrast.",
-    supportsMode: true,
     colorScheme: "light dark"
   }
 ]);
