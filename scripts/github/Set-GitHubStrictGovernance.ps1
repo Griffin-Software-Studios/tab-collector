@@ -1,6 +1,12 @@
 <#
 Purpose: Apply strict GitHub repository governance controls for the Tab Collector repository.
 Usage:   pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO"
+
+Single-contributor provision: the auto-approve workflow
+(.github/workflows/auto-approve.yml) satisfies the review requirement for
+the sole contributor by having github-actions[bot] approve each PR. This
+replaces the need for bypass_pull_request_allowances. Required status checks
+and conversation resolution are still enforced for all actors.
 #>
 
 [CmdletBinding()]
@@ -57,7 +63,7 @@ $protectionPayload = @{
     enforce_admins                   = $true
     required_pull_request_reviews    = @{
         dismiss_stale_reviews           = $true
-        require_code_owner_reviews      = $true
+        require_code_owner_reviews      = $false
         required_approving_review_count = 1
     }
     restrictions                     = $null
