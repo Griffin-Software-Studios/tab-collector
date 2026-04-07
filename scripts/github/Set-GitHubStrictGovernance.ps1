@@ -1,12 +1,12 @@
 <#
 Purpose: Apply strict GitHub repository governance controls for the Tab Collector repository.
 Usage:   pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO"
-         pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 -Repo "OWNER/REPO" -BypassUsers @("username")
 
-Single-contributor provision: pass -BypassUsers with the repo owner login so
-the owner can merge their own pull requests when CI passes and all review
-threads are resolved. This satisfies the single-contributor gate requirement
-without removing review or status-check enforcement for any other actor.
+Single-contributor provision: the auto-approve workflow
+(.github/workflows/auto-approve.yml) satisfies the review requirement for
+the sole contributor by having github-actions[bot] approve each PR. This
+replaces the need for bypass_pull_request_allowances. Required status checks
+and conversation resolution are still enforced for all actors.
 #>
 
 [CmdletBinding()]
@@ -14,11 +14,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$Repo,
 
-    [string[]]$RequiredStatusChecks = @("Node tests", "Markdown lint"),
-
-    # Logins allowed to bypass pull-request review requirements.
-    # Use for single-contributor repos where the owner must merge their own PRs.
-    [string[]]$BypassUsers = @()
+    [string[]]$RequiredStatusChecks = @("Node tests", "Markdown lint")
 )
 
 $ErrorActionPreference = "Stop"
@@ -67,13 +63,8 @@ $protectionPayload = @{
     enforce_admins                   = $true
     required_pull_request_reviews    = @{
         dismiss_stale_reviews           = $true
-        require_code_owner_reviews      = $true
+        require_code_owner_reviews      = $false
         required_approving_review_count = 1
-        bypass_pull_request_allowances  = @{
-            users = $BypassUsers
-            teams = @()
-            apps  = @()
-        }
     }
     restrictions                     = $null
     required_linear_history          = $false

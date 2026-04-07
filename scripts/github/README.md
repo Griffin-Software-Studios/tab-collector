@@ -21,18 +21,15 @@ Recommended order:
 
 ## Single-contributor provision
 
-For repositories with one active contributor, pass `-BypassUsers` so the
-owner can merge their own pull requests when CI passes and all review
-threads are resolved:
+For repositories with one active contributor, the auto-approve workflow
+at `.github/workflows/auto-approve.yml` satisfies the review requirement
+automatically. When a PR is opened or updated by the sole contributor,
+`github-actions[bot]` submits an approving review so the owner can merge
+without a separate reviewer.
 
-```powershell
-pwsh -File scripts/github/Set-GitHubStrictGovernance.ps1 `
-  -Repo "Griffin-Software-Studios/tab-collector" `
-  -BypassUsers @("Astrotheque")
-```
-
-This adds the named user to `bypass_pull_request_allowances`. Required
-status checks and conversation resolution are still enforced for all actors.
+Required status checks and conversation resolution are still enforced.
+`require_code_owner_reviews` is set to `false` in the protection payload
+so the bot approval counts toward the required review count.
 
 ## What they enforce
 
