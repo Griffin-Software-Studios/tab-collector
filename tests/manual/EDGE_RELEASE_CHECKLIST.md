@@ -18,11 +18,11 @@ Extension ID: `fplmoeljaafoanjabjhloolomhkfbhbl`
 
 | Check | Status | Notes |
 | --- | --- | --- |
-| options-page | passed | Options page renders settings grid, excluded domains, and command list |
-| collector-page | passed | Collector page renders summary cards and saved groups from seeded state |
-| collector-theme-selection | passed | Collector Griffin appearance selection switches between dark and light modes |
-| collector-tablet-layout | passed | Collector tablet layout stacks each group header and keeps controls inside the viewport |
-| collector-mobile-layout | passed | Collector mobile layout keeps controls and URLs wrapped without horizontal overflow |
-| page-context-menu | passed | Background diagnostics confirm page context-menu registration and page-only scope for collector actions |
-| popup-page | passed | Popup page renders quick actions, selected tab list, and quick list |
-| native-tab-strip-menu | not-applicable | Native tab-strip and tab-group header integration remains unsupported by the documented Edge extension API surface |
+| options-page | passed | Settings grid, domains, and command list visible |
+| collector-page | passed | Summary cards and groups from seeded state |
+| collector-theme-selection | passed | Switches between dark and light modes |
+| collector-tablet-layout | passed | Stacked groups; controls in viewport |
+| collector-mobile-layout | passed | Controls and URLs wrap without overflow |
+| page-context-menu | passed | Diagnostics confirm menu registration |
+| popup-page | passed | Quick actions, selected tabs, and quick list |
+| native-tab-strip-menu | not-applicable | Unsupported by Edge extension API |

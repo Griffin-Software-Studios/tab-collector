@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Tab Collector",
   "description": "Tab collector for Microsoft Edge with configurable save and restore behavior.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "minimum_chrome_version": "114",
   "icons": {
     "16": "assets/brand/tab-collector-64.png",

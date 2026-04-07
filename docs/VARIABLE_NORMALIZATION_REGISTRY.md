@@ -10,7 +10,8 @@ message types, menu IDs, and user-facing naming drift inside the repo.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: Starter registry. Expand as code surfaces stabilize.
 -->
 
@@ -49,7 +50,7 @@ extension names things today and where naming drift still exists.
 | Key | Meaning |
 | --- | --- |
 | `theme` | Named collector palette selection |
-| `themeMode` | Appearance override for themes that support light/dark variants |
+| `themeMode` | Appearance override for themes supporting light/dark variants |
 | `startupBehavior` | Whether to open the collector at startup |
 | `restoreBehavior` | Remove, keep, or archive behavior after restore |
 | `toolbarAction` | What clicking the toolbar icon does |
@@ -129,8 +130,10 @@ limited compatibility logic for older local settings values:
 
 Current normalization stance:
 
-- use `save*` for runtime message types, internal save functions, and user-facing actions
-- use `save-*` for action IDs, menu IDs, and keyboard command IDs where kebab-case is required
+- use `save*` for runtime message types, internal save functions, and
+  user-facing actions
+- use `save-*` for action IDs, menu IDs, and keyboard command IDs where
+  kebab-case is required
 - keep only the minimal legacy settings migration needed for persisted local state
 
 ### Theme token duality

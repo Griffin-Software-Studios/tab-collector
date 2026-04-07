@@ -5,11 +5,13 @@ Modified: 2026/03/15
 Project: Tab Collector
 Repo: Tabs
 Purpose: Capture a concise engineering handoff snapshot for the current repo state.
-Description: Summarizes what is working now, what changed recently, and the most likely next steps.
+Description: Summarizes what is working now, what changed recently, and the
+most likely next steps.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: This is a point-in-time handoff note, not a backlog system.
 -->
 
@@ -64,7 +66,13 @@ Snapshot date: 2026-03-15
 
 ## Most likely next steps
 
-1. Draft a commit plan for the work that has been done but not yet committed, then break it into reviewable chunks and link to the relevant docs and evidence updates. When possible, use the documentation connection rubric to self-assess the connection level of each chunk and identify any gaps before review. Keep in mind that the goal is to reach Level 5 (Release-ready) for each chunk, which means the change should be connected across code, docs, governance, and public-facing repo surfaces. Use the review dimensions to ensure that behavior, naming, user explanation, engineering traceability, governance/security, and verification are all adequately addressed in each chunk. Each chunk should ideally include updates to the function reference, documentation connection rubric, and any relevant user-facing docs to ensure that reviewers can easily understand the change and its implications. Commit and push each chunk with clear messages that reference the related docs and evidence, and be prepared to iterate based on reviewer feedback to achieve a well-connected change. Codex can assist in drafting commit messages, identifying relevant docs for updates, and suggesting improvements to connection levels based on the rubric. Document any decisions made during this process in the engineering notes for future reference. Each commit should be self-contained and focused on a specific aspect of the recent work, such as theme contract updates, collector page enhancements, or documentation improvements. This approach will help reviewers provide targeted feedback and ensure that each change is thoroughly vetted before being merged into the main branch. The assessment of connection levels should be honest and critical, aiming to identify any areas where the change may not be fully connected and addressing those gaps before review. The ultimate goal is to ensure that each change is not only functional but also well-documented, traceable, and ready for release with clear explanations for users and maintainers alike. Commit messages should reference the specific docs that were updated, such as the function reference for any code changes, the documentation connection rubric for any changes that affect how changes are connected, and user-facing docs for any changes that impact the user experience. This will help reviewers understand the full context of each change and how it fits into the overall state of the project. Additionally, any relevant evidence, such as test results or manual validation steps, should be included in the commit messages or linked in the engineering notes to provide a clear record of how the change was verified. This comprehensive approach to committing and documenting changes will help ensure that the project remains well-organized and that future maintainers can easily understand the history and rationale behind each change. Following governance best practices and maintaining a high level of connection across code, docs, and governance will contribute to the long-term success and maintainability of the project. By systematically addressing each aspect of the change and ensuring that it is well-connected, we can facilitate smoother reviews, better documentation, and a more robust codebase that is easier to maintain and extend in the future. PR reviews will be carried out with an eye toward identifying any gaps in connection levels and providing constructive feedback to help achieve Level 5 (Release-ready) for each change. Reviewers should reference the documentation connection rubric during their review process to ensure that all relevant dimensions are adequately addressed and that the change is well-connected across code, docs, governance, and public-facing surfaces. The goal of the review process is not only to catch any issues but also to help improve the overall quality and connection of each change, ensuring that it is ready for release and well-understood by both users and maintainers. By following this structured approach to committing, documenting, and reviewing changes, we can maintain a high standard of quality and connection in the project, ultimately leading to a better experience for users and a more maintainable codebase for developers.
+1. Draft a commit plan for uncommitted work. Break it into reviewable chunks
+   and self-assess each using the documentation connection rubric. Target
+   Level 5 (Release-ready): code, docs, governance, and public surfaces all
+   addressed. Include function reference updates, user-facing doc updates,
+   and clear evidence in commit messages. Document decisions in engineering
+   notes.
 2. Add light and dark variants for Cobalt, Ember, and Forest.
 3. Continue manual tablet/mobile resizing passes on collector group layouts.
-4. Refresh Edge evidence after the manual script changes are validated in a live session.
+4. Refresh Edge evidence after the manual script changes are validated in a
+   live session.

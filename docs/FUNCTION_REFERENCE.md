@@ -10,8 +10,10 @@ flows so code changes can be connected to the right surfaces and docs.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This is intentionally selective. It focuses on public behavior and key entry points.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This is intentionally selective. It focuses on public behavior and
+key entry points.
 -->
 
 # Function Reference
@@ -26,8 +28,8 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 | `handleMessage(message, sender)` | Central runtime message dispatcher |
 | `openCollector()` | Opens or focuses the collector tab |
 | `syncContextMenus()` | Rebuilds extension page context menus |
-| `performContextMenuStateSync()` | Enables or disables state-dependent menu items |
-| `getContextMenuDiagnostics()` | Returns a runtime snapshot of menu registration/state for evidence automation |
+| `performContextMenuStateSync()` | Enables/disables state-dependent items |
+| `getContextMenuDiagnostics()` | Menu snapshot for evidence automation |
 
 ### Runtime message routes
 
@@ -45,12 +47,12 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 
 | Function | Purpose |
 | --- | --- |
-| `captureCurrentWindow()` | Captures the current window, highlighted tabs, or active group as applicable |
-| `captureCurrentTab()` | Captures only the active tab and prefers an existing eligible destination group |
+| `captureCurrentWindow()` | Highlighted tabs, active group, or full window |
+| `captureCurrentTab()` | Active tab; prefers an eligible destination group |
 | `captureCurrentGroup()` | Captures every tab in the active browser tab group |
 | `captureSelectedTabs()` | Captures an explicit set of tab IDs from the popup |
-| `captureTabs()` | Shared capture pipeline: filtering, deduping, storage, and tab removal |
-| `getWindowCaptureTabs()` | Determines whether a window capture means selected tabs, active group, or whole window |
+| `captureTabs()` | Shared capture: filter, dedup, store, and remove tabs |
+| `getWindowCaptureTabs()` | Window capture: tabs, group, or full window |
 
 ### Restore and group mutation
 
@@ -59,7 +61,7 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 | `restoreGroup()` | Restores a whole saved group |
 | `restoreTab()` | Restores a single saved tab |
 | `openStoredTabs()` | Reopens saved tabs in a current or new window |
-| `toggleGroupFlag()` | Toggles saved group state flags and syncs pinned groups with browser pinned tabs |
+| `toggleGroupFlag()` | Toggles group flags; syncs pinned groups with browser |
 | `renameGroup()` | Renames a saved group |
 | `updateGroupNotes()` | Writes notes to a saved group |
 | `deleteGroup()` | Deletes a saved group |
@@ -72,8 +74,8 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 
 | Function | Purpose |
 | --- | --- |
-| `initialize()` | Loads state and current-window tabs, then renders popup sections |
-| `getDefaultSelection()` | Chooses default selected tabs based on highlight/group/window state |
+| `initialize()` | Loads state and tabs for the current window, renders popup |
+| `getDefaultSelection()` | Default tabs based on highlight, group, or window |
 | `renderDestinationOptions()` | Populates the destination-group selector |
 | `renderTabs()` | Renders the current-window tab checklist |
 | `renderQuickList()` | Renders recent saved groups |
@@ -93,13 +95,13 @@ Notes: This is intentionally selective. It focuses on public behavior and key en
 
 | Function | Purpose |
 | --- | --- |
-| `renderShell()` | Builds the collector page frame, hero controls, and summary cards |
-| `buildGroupCard()` | Builds one saved-group card with status badges and group actions |
+| `renderShell()` | Builds the page frame, hero controls, and summary cards |
+| `buildGroupCard()` | Saved-group card with status badges and actions |
 | `renderGroups()` | Renders saved groups into the collector |
 | `attachEvents()` | Wires collector actions and inline editing behavior |
 | `applyTheme()` | Applies the selected theme and appearance contract |
-| `syncThemeControls()` | Keeps the collector theme and appearance selectors aligned with saved settings |
-| `openDuplicateSelection()` | Opens the duplicate-review dialog so removal can be confirmed tab by tab |
+| `syncThemeControls()` | Keeps theme and mode selectors aligned with settings |
+| `openDuplicateSelection()` | Duplicate-review dialog for confirmed removal |
 
 The collector is UI-heavy and will need deeper documentation later if the page
 keeps growing.

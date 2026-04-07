@@ -10,7 +10,8 @@ settings, keyboard command, and current browser-platform limitations.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: User-facing copy should stay aligned with this reference.
 -->
 

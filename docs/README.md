@@ -10,8 +10,10 @@ notes, and local security records to their intended usage.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
-Notes: This is a project-local registry, not a copy of Org-Security-Docs canonical content.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
+Notes: This is a project-local registry, not a copy of Org-Security-Docs
+canonical content.
 -->
 
 # Documentation Registry

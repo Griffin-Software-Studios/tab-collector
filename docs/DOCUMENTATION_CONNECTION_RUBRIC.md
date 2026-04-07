@@ -10,7 +10,8 @@ enough to be considered connected, reviewable, and release-ready.
 Owner: Griffin Software Studios
 Author: Codex
 Classification: Internal
-Security: Do not store secrets, tokens, or credentials. Redact sensitive values in logs and examples.
+Security: Do not store secrets, tokens, or credentials.
+Redact sensitive values in logs and examples.
 Notes: Use this as a review aid, not a substitute for engineering judgment.
 -->
 
@@ -30,12 +31,12 @@ records when relevant.
 
 | Level | Name | Meaning |
 | --- | --- | --- |
-| 0 | Isolated | Code changed, but no related documentation or naming review happened |
+| 0 | Isolated | Code changed; no related docs or naming review |
 | 1 | Operational | Code works, but docs and registry updates are missing |
 | 2 | Documented | Code and immediate user-facing docs were updated |
 | 3 | Traceable | Code, docs, identifiers, and rationale were updated together |
 | 4 | Governed | Security/release implications are documented and linked |
-| 5 | Release-ready | The change is connected across code, docs, governance, and public-facing repo surfaces |
+| 5 | Release-ready | Connected: code, docs, governance, and public surfaces |
 
 ## Review dimensions
 
@@ -48,11 +49,11 @@ Score each dimension as:
 | Dimension | Questions |
 | --- | --- |
 | Behavior | Does the implementation do what the feature claims? |
-| Naming | Are IDs, message types, labels, and storage keys normalized or explicitly documented if they drift? |
-| User explanation | Can a reviewer tell what changed from README, menu docs, or UI copy? |
-| Engineering traceability | Is the change reflected in the function reference or engineering notes if it changes architecture or flow? |
-| Governance/security | Are permissions, integrations, or sensitive behavior documented if relevant? |
-| Verification | Is there evidence of a syntax check, manual check, or other validation? |
+| Naming | IDs, types, labels, and keys normalized or documented? |
+| User explanation | Change visible in README, menu docs, or UI copy? |
+| Engineering traceability | In function reference or engineering notes? |
+| Governance/security | Permissions and sensitive behavior documented? |
+| Verification | Evidence of syntax check, manual check, or validation? |
 
 ## Minimum targets by change type
 
@@ -95,7 +96,8 @@ Use this short checklist before calling a change complete:
 1. Behavior is implemented and validated.
 2. User-facing labels and internal IDs are either aligned or the drift is documented.
 3. The relevant local docs were updated.
-4. Security/governance implications are recorded if the change affects permissions, data handling, or release posture.
+4. Security/governance implications are recorded if the change affects
+   permissions, data handling, or release posture.
 5. The README reflects the change if an outside reader would care.
 
 ## Current repository gaps
