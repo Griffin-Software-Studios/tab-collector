@@ -1,0 +1,25 @@
+name: Auto-approve sole-contributor PRs
+
+# Automatically approves pull requests opened by the sole contributor so
+# the owner can merge without a separate reviewer. Required status checks
+# and conversation resolution are still enforced by branch protection.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'Astrotheque'
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Approve PR
+        run: |
+          gh pr review "${{ github.event.pull_request.number }}" \
+            --approve \
+            --body "Auto-approved: sole-contributor gate satisfied." \
+            --repo "${{ github.repository }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
