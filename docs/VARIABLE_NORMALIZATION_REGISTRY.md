@@ -158,8 +158,8 @@ The current theme contract is intentionally two-part:
 
 Current behavior:
 
-- `griffin`, `cobalt`, `ember`, and `forest` support `system`, `light`, and
-  `dark`
+- `griffin` supports `system`, `light`, and `dark`
+- imported palettes currently stay on their authored dark/base treatment
 
 ## Reference linkages
 

@@ -419,6 +419,7 @@ input[type="text"] {
   padding: 4px 4px;
   border-radius: 3px;
   -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 input:focus,
@@ -811,11 +812,6 @@ a:focus-visible {
   border-radius: 6px;
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-track-thumb-color) var(--scrollbar-track-color);
-}
-
 .headerControl {
   border: 1px solid transparent;
 }
@@ -848,6 +844,7 @@ a:focus-visible {
   height: 20px;
   white-space: nowrap;
   vertical-align: middle;
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -1320,8 +1317,8 @@ a:focus-visible {
   border-radius: 4px;
   background: var(--text-highlight-bg-color);
   color: var(--text-color-em);
-  box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .collector-tabs {
@@ -1425,6 +1422,7 @@ body.collector-confirm-open {
   background:
     radial-gradient(circle at top, rgba(71, 155, 204, 0.18), transparent 34%),
     rgba(7, 16, 25, 0.56);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
@@ -1659,7 +1657,6 @@ body.collector-confirm-open {
 
 .multiple-choice-button,
 .selectable-item {
-  min-height: auto;
   line-height: 1.1;
   padding: 7px 10px;
   border-radius: 999px;
